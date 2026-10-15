@@ -96,7 +96,8 @@
         {"@type": "Question", "name": "Kann beim Anbieterwechsel der Strom ausfallen?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Der Netzbetreiber bleibt gleich, nur der Lieferant wechselt. Die Versorgung läuft ohne Unterbrechung weiter."}},
         {"@type": "Question", "name": "Wie lange dauert ein Wechsel?", "acceptedAnswer": {"@type": "Answer", "text": "Technisch wird der Lieferant seit Juni 2025 innerhalb eines Werktags umgestellt. Maßgeblich ist die Kündigungsfrist Ihres bisherigen Vertrags; in der Grundversorgung sind es zwei Wochen."}},
         {"@type": "Question", "name": "Warum nicht einfach ein Vergleichsportal?", "acceptedAnswer": {"@type": "Answer", "text": "Portale sind ein gutes Werkzeug, wenn Sie selbst vergleichen möchten. Ich übernehme Vergleich, Wechsel und die Erinnerung vor Laufzeitende persönlich."}},
-        {"@type": "Question", "name": "Was brauche ich für den Check?", "acceptedAnswer": {"@type": "Answer", "text": "Ihre letzte Jahresabrechnung. Ein Foto genügt."}}
+        {"@type": "Question", "name": "Was brauche ich für den Check?", "acceptedAnswer": {"@type": "Answer", "text": "Ihre letzte Jahresabrechnung. Ein Foto genügt."}},
+        {"@type": "Question", "name": "Wie setzen Sie KI ein?", "acceptedAnswer": {"@type": "Answer", "text": "Für Texte und Grafiken, Organisation und geprüfte Recherche. Nie für Ihre Abrechnung in kostenlosen KI-Tools, nie für erfundene Kundenstimmen und nie für automatische Tarifentscheidungen. Die Beratung bleibt persönlich."}}
       ]
     }
   ]
@@ -651,6 +652,43 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
 }
 
 /* Barrierefreiheit: Bewegung reduzieren, wenn im System eingestellt */
+/* =====================================================================
+   KOMPAKT MOBIL: Wischleisten + Aufklappen statt Endlos-Scrollen
+   ===================================================================== */
+.more>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;min-height:48px}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary::after{content:"";width:9px;height:9px;flex:none;margin-right:4px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(45deg);transition:transform .25s var(--ease)}
+.more[open]>summary::after{transform:rotate(225deg)}
+.more>summary h3{margin:0}
+details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding-top:4px}
+.ki-mini{display:grid;gap:14px;margin-top:10px}
+.ki-mini ul{margin:6px 0 0}
+.rail-dots{display:none}
+.chart-more>summary{color:var(--deep-fg);margin-top:8px}
+.chart-more>summary h3{color:inherit;font-size:1.05rem}
+.chart-more .chart{margin-top:12px}
+
+@media (min-width:640px){.ki-mini{grid-template-columns:1fr 1fr}}
+@media (max-width:639px){
+  section{padding-block:40px}
+  .rail{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;
+    margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:4px max(16px,env(safe-area-inset-left,0px)) 6px;scroll-padding-inline:max(16px,env(safe-area-inset-left,0px))}
+  .rail::-webkit-scrollbar{display:none}
+  .rail>*{flex:0 0 84%;scroll-snap-align:start;min-width:0}
+  .rail>.rv{opacity:1;transform:none}
+  .rail-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+  .rail-dots span{width:7px;height:7px;border-radius:99px;background:var(--line);transition:width .25s var(--ease),background .25s}
+  .rail-dots span.on{width:20px;background:var(--brand)}
+  .deep .rail-dots span{background:color-mix(in srgb,var(--deep-fg) 25%,transparent)}
+  .deep .rail-dots span.on{background:var(--accent)}
+  .person{grid-template-columns:104px 1fr;gap:6px 18px;align-items:center}
+  .portrait{max-width:104px;box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--accent)}
+  .portrait::before{font-size:1.6rem}
+  .person .stack{display:contents}
+  .person .stack>.eyebrow{display:none}
+  .person .stack>h2{grid-column:2;grid-row:1;margin:0}
+  .person .stack>.lead,.person .towns{grid-column:1 / -1}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -878,8 +916,9 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
       </div>
 
       <!-- Balkendiagramm CO₂-Preis: echte gesetzliche Werte (BEHG), feste viewBox = kein CLS -->
+      <details class="more chart-more rv" data-open-desktop>
+      <summary><h3>Der CO₂-Preis auf Heizgas und Heizöl steigt per Gesetz</h3></summary>
       <figure class="chart rv" id="co2" aria-labelledby="co2-cap">
-        <h3 style="color:var(--deep-fg);margin-bottom:8px">Der CO₂-Preis auf Heizgas und Heizöl steigt per Gesetz</h3>
         <svg viewBox="0 0 600 270" role="img" aria-label="CO₂-Preis in Euro je Tonne: 2021 25, 2022 30, 2023 30, 2024 45, 2025 55, 2026 und 2027 Korridor 55 bis 65, ab 2028 Marktpreis im EU-Emissionshandel">
           <line x1="20" y1="230" x2="590" y2="230" stroke="currentColor" stroke-opacity=".25"/>
           <rect class="bar" x="30"  y="167.5" width="48" height="62.5" rx="6"/>
@@ -903,6 +942,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         </svg>
         <figcaption id="co2-cap">CO₂-Preis in € je Tonne nach Brennstoffemissionshandelsgesetz (BEHG); 2026/27 Preiskorridor 55–65 €. Ab 2028 soll der EU-Emissionshandel ETS2 übernehmen, der Preis bildet sich dann am Markt.</figcaption>
       </figure>
+      </details>
     </div>
   </section>
 
@@ -913,13 +953,15 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         <p class="eyebrow">So einfach geht's</p>
         <h2 id="ablauf-h">Drei Schritte. Sie lehnen sich zurück.</h2>
       </div>
-      <ol class="steps">
+      <ol class="steps rail" aria-label="Ablauf in drei Schritten">
         <li class="rv"><h3>Abrechnung zeigen</h3><p class="muted">Ein Foto Ihrer letzten Jahresabrechnung genügt. Bei Ihnen vor Ort oder per Nachricht.</p></li>
         <li class="rv"><h3>Ich vergleiche</h3><p class="muted">Sie bekommen passende Tarife mit Laufzeit, Preisgarantie und Bonus verständlich erklärt.</p></li>
         <li class="rv"><h3>Ich wechsle für Sie</h3><p class="muted">Kündigung und Anmeldung übernehme ich. Vor Laufzeitende melde ich mich wieder.</p></li>
       </ol>
 
-      <div class="table-wrap rv" role="region" aria-labelledby="cmp-cap" tabindex="0">
+      <details class="more rv" data-open-desktop>
+      <summary>Portal oder persönlicher Berater? Vergleich ansehen</summary>
+      <div class="table-wrap" role="region" aria-labelledby="cmp-cap" tabindex="0">
         <table>
           <caption id="cmp-cap">Selbst vergleichen oder mit Berater?</caption>
           <thead><tr><th scope="col">Kriterium</th><th scope="col">Vergleichsportal</th><th scope="col">Kostenwende</th></tr></thead>
@@ -933,6 +975,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         </table>
       </div>
       <p class="small muted" style="margin-top:12px">Portale sind ein gutes Werkzeug, wenn Sie gern selbst vergleichen. Ich bin für alle, die es lieber erledigt haben möchten.</p>
+      </details>
     </div>
   </section>
 
@@ -943,7 +986,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         <p class="eyebrow">Vertrauen</p>
         <h2 id="trust-h">Geprüft statt versprochen.</h2>
       </div>
-      <div class="grid trust">
+      <div class="grid trust rail">
         <article class="card rv">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5L16 9.5"/></svg></div>
           <h3>Bekannte Energieversorger</h3>
@@ -1008,17 +1051,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         <details><summary>Wie lange dauert ein Wechsel?</summary><p>Technisch wird der Lieferant seit Juni 2025 innerhalb eines Werktags umgestellt. Maßgeblich ist die Kündigungsfrist Ihres bisherigen Vertrags; in der Grundversorgung sind es zwei Wochen.</p></details>
         <details><summary>Warum nicht einfach ein Vergleichsportal?</summary><p>Portale sind ein gutes Werkzeug, wenn Sie selbst vergleichen möchten. Ich übernehme Vergleich, Wechsel und die Erinnerung vor Laufzeitende persönlich.</p></details>
         <details><summary>Was brauche ich für den Check?</summary><p>Ihre letzte Jahresabrechnung. Ein Foto genügt.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TRUST · KI-Transparenz (EU AI Act Art. 50, DSGVO): ehrlich sagen, wofür KI genutzt wird ===== -->
-  <section id="ki-transparenz" aria-labelledby="kit-h">
-    <div class="wrap">
-      <div class="head rv"><p class="eyebrow">Transparenz</p><h2 id="kit-h">So setze ich KI ein. Und so nicht.</h2><p class="muted">Ich nutze KI, damit mehr Zeit für Sie bleibt. Die Beratung bleibt persönlich.</p></div>
-      <div class="ki-grid">
-        <div class="card rv"><h3>Wofür ich KI nutze</h3><ul class="ok-list"><li>Texte und Grafiken für diese Seite und Social Media</li><li>Organisation: Termine, Erinnerungen, Wiedervorlagen</li><li>Recherche, die ich immer mit Quellen prüfe</li></ul></div>
-        <div class="card rv"><h3>Wofür nie</h3><ul class="no-list"><li>Ihre Abrechnung in kostenlose KI-Tools laden</li><li>Erfundene Kundenstimmen oder KI-Personen. Das Foto auf dieser Seite bin wirklich ich.</li><li>Automatische Tarifentscheidungen. Empfehlungen gibt es nur von mir, nach Prüfung Ihrer Unterlagen.</li></ul></div>
+        <details id="ki-transparenz"><summary id="kit-h">Wie setzen Sie KI ein?</summary><p>Damit mehr Zeit für Sie bleibt. Die Beratung bleibt persönlich.</p><div class="ki-mini"><div><b>Wofür ich KI nutze</b><ul class="ok-list"><li>Texte und Grafiken für diese Seite und Social Media</li><li>Organisation: Termine, Erinnerungen, Wiedervorlagen</li><li>Recherche, die ich immer mit Quellen prüfe</li></ul></div><div><b>Wofür nie</b><ul class="no-list"><li>Ihre Abrechnung in kostenlose KI-Tools laden</li><li>Erfundene Kundenstimmen oder KI-Personen. Das Foto auf dieser Seite bin wirklich ich.</li><li>Automatische Tarifentscheidungen. Empfehlungen gibt es nur von mir, nach Prüfung Ihrer Unterlagen.</li></ul></div></div></details>
       </div>
     </div>
   </section>
@@ -1148,7 +1181,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         <h2 id="ki-h">Gemeinsam wachsen. Mit KI an Ihrer Seite.</h2>
         <p class="lead">Wer wirklich etwas erreichen will, bekommt von mir mehr als eine Einarbeitung: Ich teile mein KI-Know-how, damit Sie schneller sichtbar werden.</p>
       </div>
-      <div class="grid g3">
+      <div class="grid g3 rail">
         <article class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div><h3>Ihre eigene Website</h3><p class="muted small">Mit KI bauen wir gemeinsam Ihre persönliche Berater-Seite. So wie diese hier: schnell, mobil, mit Rechner.</p></article>
         <article class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></div><h3>Social-Media-Content</h3><p class="muted small">Ideen, Texte und Redaktionsplan für Instagram und Co. Mit KI in Minuten statt Stunden.</p></article>
         <article class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Skalieren mit System</h3><p class="muted small">Klare Ziele, regelmäßige Strategie-Gespräche und erprobte Abläufe. Partnerschaftlich, auf Augenhöhe.</p></article>
@@ -1158,15 +1191,15 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
         <div><h3>Nicht für jeden. Bewusst.</h3><p class="muted">Diese Unterstützung gebe ich Partnern, die engagiert sind und mit mir wachsen wollen. Im Kennenlernen klären wir, ob wir zusammenpassen. Alle Inhalte natürlich nach TELESON- und BDD-Vorgaben.</p></div>
       </div>
       <!-- KI-Richtlinie für das Team (Modul „KI-Richtlinien“): verbindlich für alle Partner -->
-      <div class="card rv policy">
-        <h3>Unsere KI-Spielregeln im Team</h3>
+      <details class="card rv policy more" data-open-desktop>
+        <summary><h3>Unsere KI-Spielregeln im Team</h3></summary>
         <ul class="ok-list">
           <li><b>Transparent:</b> KI hilft, ein Mensch prüft und verantwortet jeden Inhalt.</li>
           <li><b>Echt:</b> keine erfundenen Kundenstimmen, keine KI-Personen, Produktpartner immer genannt.</li>
           <li><b>Sicher:</b> Kundendaten nur in DSGVO-konformen Werkzeugen, nie in Gratis-Chats.</li>
           <li><b>Fair:</b> Werbung nach BDD-Standards, keine Kaltakquise, kein Druck.</li>
         </ul>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -1174,7 +1207,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
   <section id="p-ablauf" aria-labelledby="p-ablauf-h">
     <div class="wrap">
       <div class="head rv"><p class="eyebrow">Ihr Start</p><h2 id="p-ablauf-h">In vier Schritten zum ersten Abschluss.</h2></div>
-      <ol class="steps four">
+      <ol class="steps four rail" aria-label="Start in vier Schritten">
         <li class="rv"><h3>Kennenlernen</h3><p class="muted">30 Minuten, unverbindlich. Passt das zu Ihnen?</p></li>
         <li class="rv"><h3>Registrieren</h3><p class="muted">Kostenlos, mit eigener Partnernummer und App-Zugang.</p></li>
         <li class="rv"><h3>Schulung</h3><p class="muted">Produkte, Beratung, Regeln. Online und mit mir.</p></li>
@@ -1205,7 +1238,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
   <section class="band" id="regeln" aria-labelledby="regeln-h">
     <div class="wrap">
       <div class="head rv"><p class="eyebrow">Fair und sauber</p><h2 id="regeln-h">Klare Spielregeln.</h2></div>
-      <div class="rules">
+      <div class="rules rail">
         <div class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div><div><h3>Selbstständig</h3><p class="muted small">Mit Gewerbeanmeldung. Was Sie sonst brauchen, kläre ich mit Ihnen.</p></div></div>
         <div class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>Ab 18 Jahren</h3><p class="muted small">Zeit frei einteilen, neben Job, Studium oder Betrieb.</p></div></div>
         <div class="card rv"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><h3>Verdienst nur aus Verträgen</h3><p class="muted small">Kein Geld für Anwerbung, keine Pflichtkäufe, keine Gebühren.</p></div></div>
@@ -1868,6 +1901,26 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
   });
   $('year').textContent = new Date().getFullYear();
 })();
+
+  /* ===== Kompakt-Modus: Aufklapper am Desktop offen, Wisch-Punkte am Handy ===== */
+  (() => {
+    if (matchMedia('(min-width:640px)').matches) document.querySelectorAll('[data-open-desktop]').forEach((d) => { d.open = true; });
+    document.querySelectorAll('.rail').forEach((rail) => {
+      const items = [...rail.children]; if (items.length < 2) return;
+      const dots = document.createElement('div'); dots.className = 'rail-dots'; dots.setAttribute('aria-hidden', 'true');
+      items.forEach(() => dots.appendChild(document.createElement('span')));
+      rail.after(dots);
+      let raf = 0;
+      const upd = () => {
+        raf = 0;
+        const max = rail.scrollWidth - rail.clientWidth;
+        const i = max <= 0 ? 0 : Math.round((rail.scrollLeft / max) * (items.length - 1));
+        [...dots.children].forEach((d, n) => d.classList.toggle('on', n === i));
+      };
+      rail.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+      upd();
+    });
+  })();
 </script>
 </body>
 </html>
