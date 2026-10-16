@@ -13,7 +13,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: '.qa/playwright.json' }]],
   expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.002, animations: 'disabled' } },
   use: { baseURL: BASE_URL, trace: 'retain-on-failure' },
-  webServer: local ? { command: 'python3 -m http.server 8765 --directory docs', url: BASE_URL, reuseExistingServer: true } : undefined,
+  webServer: local ? { command: 'node scripts/serve.mjs', url: BASE_URL, reuseExistingServer: true } : undefined,
   projects: [
     { name: 'mobil-hell', use: { ...devices['Pixel 7'], colorScheme: 'light' } },
     { name: 'mobil-dunkel', use: { ...devices['Pixel 7'], colorScheme: 'dark' } },

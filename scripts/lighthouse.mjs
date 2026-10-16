@@ -15,7 +15,7 @@ let server = null;
 if (!process.env.BASE_URL) {
   const up = await fetch(URL).then((r) => r.ok).catch(() => false);
   if (!up) {
-    server = spawn('python3', ['-m', 'http.server', '8765', '--directory', 'docs'], { stdio: 'ignore' });
+    server = spawn('node', ['scripts/serve.mjs'], { stdio: 'ignore' });
     for (let i = 0; i < 50 && !(await fetch(URL).then((r) => r.ok).catch(() => false)); i++) await new Promise((r) => setTimeout(r, 100));
   }
 }

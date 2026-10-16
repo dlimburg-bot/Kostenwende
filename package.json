@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Kostenwende – Website (docs/) mit Qualitäts- und Freigabeprozess",
   "scripts": {
-    "serve": "python3 -m http.server 8765 --directory docs",
+    "serve": "node scripts/serve.mjs",
     "check": "node scripts/check.mjs",
     "test": "playwright test --grep-invert @visual",
     "test:visual": "playwright test --grep @visual",

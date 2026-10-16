@@ -22,10 +22,10 @@
       "ice_r": {
         "impact": 5,
         "weight": 3,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 15.0
+        "score": 15
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -56,7 +56,7 @@
         "confidence": 0.7,
         "effort": 1,
         "risk": 1,
-        "score": 7.0
+        "score": 7
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -84,10 +84,10 @@
       "ice_r": {
         "impact": 5,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 2,
         "risk": 1,
-        "score": 5.0
+        "score": 5
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -114,10 +114,10 @@
       "ice_r": {
         "impact": 3,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 6.0
+        "score": 6
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -143,10 +143,10 @@
       "ice_r": {
         "impact": 4,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 8.0
+        "score": 8
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -171,10 +171,10 @@
       "ice_r": {
         "impact": 5,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 2,
         "risk": 1,
-        "score": 5.0
+        "score": 5
       },
       "depends_on": [
         "CON-003"
@@ -203,10 +203,10 @@
       "ice_r": {
         "impact": 4,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 2,
         "risk": 1,
-        "score": 4.0
+        "score": 4
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -324,10 +324,10 @@
       "ice_r": {
         "impact": 1,
         "weight": 3,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 3.0
+        "score": 3
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -389,7 +389,7 @@
       "ice_r": {
         "impact": 2,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 4,
         "risk": 1.5,
         "score": 0.67
@@ -450,10 +450,10 @@
       "ice_r": {
         "impact": 3,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 6.0
+        "score": 6
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -479,10 +479,10 @@
       "ice_r": {
         "impact": 3,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 6.0
+        "score": 6
       },
       "depends_on": [],
       "conflicts_with": [],
@@ -507,10 +507,102 @@
       "ice_r": {
         "impact": 1,
         "weight": 2,
-        "confidence": 1.0,
+        "confidence": 1,
         "effort": 1,
         "risk": 1,
-        "score": 2.0
+        "score": 2
+      },
+      "depends_on": [],
+      "conflicts_with": [],
+      "resolution": null,
+      "status": "umgesetzt"
+    },
+    {
+      "id": "DES-001",
+      "title": "Generische Gestaltung (16 Radien, 11 Schatten, Icon-Kacheln) ohne Markenbezug",
+      "areas": [
+        "design",
+        "marke"
+      ],
+      "goal": "G3",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "D2-Bestandsmessung: 16 Radiuswerte, 11 Schattenwerte, 13 Deko-Icons"
+      },
+      "action": "Design-System v2 „Die lesbare Rechnung“: 3 Radien, 1 Schatten, Serif-Überschriften, Beleg-Rechner, Zeitleiste, Linien statt Kästen",
+      "acceptance": [
+        "axe 0 Verstöße",
+        "Lighthouse-Grenzwerte halten",
+        "Seitenlänge mobil ≤ 8"
+      ],
+      "ice_r": {
+        "impact": 2,
+        "weight": 1,
+        "confidence": 0.8,
+        "effort": 3,
+        "risk": 1,
+        "score": 0.53
+      },
+      "depends_on": [],
+      "conflicts_with": [
+        "PERF (Webfont +42 KB)"
+      ],
+      "resolution": "Konfliktregel: Stabilität vor Ästhetik → Schrift auf 1 Schnitt (500) instanziert, font-display:optional, CLS 0; LCP gemessen 1,5–1,7 s",
+      "status": "umgesetzt"
+    },
+    {
+      "id": "DES-002",
+      "title": "Partner-Nachweise als Bildwand dominieren die Zeitleiste (Desktop)",
+      "areas": [
+        "design",
+        "ux"
+      ],
+      "goal": "G4",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "Browser-Abnahme Runde 2, 1440 px: 3 Vorschauen à ~250 px Höhe"
+      },
+      "action": "Ab 960 px Text links, kompakte Vorschauen rechts (max. 150 px); Tablet max. 170 px; Silbentrennung in Bildunterschriften",
+      "acceptance": [
+        "kein Überlauf 768 px",
+        "Nachweis-Tests grün"
+      ],
+      "ice_r": {
+        "impact": 1,
+        "weight": 3,
+        "confidence": 0.8,
+        "effort": 1,
+        "risk": 1,
+        "score": 2.4
+      },
+      "depends_on": [],
+      "conflicts_with": [],
+      "resolution": null,
+      "status": "umgesetzt"
+    },
+    {
+      "id": "QA-005",
+      "title": "Lokale Lighthouse-Messung ohne Kompression (python http.server) verfälscht LCP",
+      "areas": [
+        "performance",
+        "qa"
+      ],
+      "goal": "G5",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "Mobil-LCP 2.253 ms unkomprimiert (207 KB HTML) vs. 1.512 ms mit gzip (90 KB) – GitHub Pages liefert gzip"
+      },
+      "action": "scripts/serve.mjs: abhängigkeitsfreier Node-Server mit gzip; npm run serve, Lighthouse und Playwright nutzen ihn",
+      "acceptance": [
+        "LCP mobil ≤ 2.000 ms (Median 3 Läufe)"
+      ],
+      "ice_r": {
+        "impact": 2,
+        "weight": 2,
+        "confidence": 0.9,
+        "effort": 1,
+        "risk": 1,
+        "score": 3.6
       },
       "depends_on": [],
       "conflicts_with": [],

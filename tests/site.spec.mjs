@@ -19,7 +19,9 @@ test.describe('Funktion', () => {
   test('Rechner kennzeichnet Marktwert und Beispielpreis (K1/K2)', async ({ page }) => {
     await page.goto('./');
     await expect(page.locator('#r-kosten-l')).toHaveText('Geschätzte Kosten pro Jahr');
-    await expect(page.locator('#r-src')).toContainText('Marktwert laut Verivox');
+    await expect(page.locator('#r-src')).toContainText('Marktwert');
+    await expect(page.locator('#r-src')).toContainText('laut Verivox');
+    await expect(page.locator('#r-src')).toContainText('TELESON-Angebot kann abweichen');
     await expect(page.locator('#r-src')).toContainText('Beispielpreis');
     await page.locator('#rechner summary').click();
     await page.fill('#arbeitspreis', '38,5');
@@ -87,7 +89,7 @@ test.describe('Barrierefreiheit', () => {
   test('Wischleisten am Handy per Tastatur erreichbar', async ({ page }, info) => {
     test.skip(!info.project.name.startsWith('mobil'));
     await page.goto('./');
-    expect(await page.locator('#ablauf .rail').getAttribute('tabindex')).toBe('0');
+    expect(await page.locator('#vertrauen .rail').getAttribute('tabindex')).toBe('0');
   });
 });
 
