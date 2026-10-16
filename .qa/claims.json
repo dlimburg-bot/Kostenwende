@@ -181,11 +181,13 @@
     },
     {
       "id": "R-02",
-      "text": "Beispielpreise Rechner: Strom 42 ct/kWh + 14 €/Monat, Gas 12 ct/kWh + 15 €/Monat",
-      "quelle": "keine – Beispielwerte, als solche gekennzeichnet",
-      "status": "übernommen",
+      "text": "Beispielpreis Rechner Strom: 39,91 ct/kWh + 14,98 €/Monat = Grundversorgung SVS „SVSstrom allgemein“ (1.576,61 € bei 3.500 kWh); Gas: 12 ct + 15 €/Monat Beispielwert",
+      "quelle": "stromvermittlung.de/stromanbieter/stadtwerke-villingen-s und stromauskunft.de/de/stadt/stromanbieter-in-villingen-schwenningen.html, beide Stand 16.10.2026, übereinstimmend",
+      "status": "verifiziert (Strom, Sekundärquellen) · offen (Gas)",
       "geprueft_am": "2026-10-16",
-      "notiz": "Offen: an regionalem Grundversorgungstarif ausrichten und Quelle nennen"
+      "notiz": "Primärquelle: Preisblatt der SVS bei nächster Prüfung einsehen; brutto nicht ausdrücklich angegeben [Annahme: brutto, da Jahreskosten-Vergleich für Verbraucher]. Gas-Beispiel weiter ohne Quelle, gekennzeichnet.",
+      "url": "https://www.stromvermittlung.de/stromanbieter/stadtwerke-villingen-s",
+      "stand": "2026-10-16"
     }
   ]
 }

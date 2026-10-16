@@ -12,7 +12,7 @@ test.describe('Funktion', () => {
     await page.fill('#verbrauch', '3.500');
     await page.locator('#rechner summary').click();
     await page.fill('#arbeitspreis', '42,5');
-    await expect(page.locator('#r-kosten')).toHaveText(/1\.656\s?€/);
+    await expect(page.locator('#r-kosten')).toHaveText(/1\.667\s?€/);
     expect(errs).toEqual([]);
   });
 

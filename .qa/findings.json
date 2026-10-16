@@ -548,7 +548,7 @@
         "PERF (Webfont +42 KB)"
       ],
       "resolution": "Konfliktregel: Stabilität vor Ästhetik → Schrift auf 1 Schnitt (500) instanziert, font-display:optional, CLS 0; LCP gemessen 1,5–1,7 s",
-      "status": "umgesetzt"
+      "status": "ersetzt (DES-003)"
     },
     {
       "id": "DES-002",
@@ -608,6 +608,69 @@
       "conflicts_with": [],
       "resolution": null,
       "status": "umgesetzt"
+    },
+    {
+      "id": "DES-003",
+      "title": "Gestaltung wirkte wie typische KI-Website (Serif-Kursiv-Akzent, Papier-Creme, Versalien-Labels, Häkchen-Leisten)",
+      "areas": [
+        "design",
+        "marke"
+      ],
+      "goal": "G3",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "Design-Lint auf Commit 30b34b6: AG-01, -03, -04, -06, -07, -10 verletzt; Rückmeldung Dennis 16.10.2026"
+      },
+      "action": "Markensystem v3 „Wendepunkt“ + Master-Skill brand-goldstandard + Design-Lint als QA-Tor",
+      "acceptance": [
+        "Design-Lint 0 Verstöße in 12 Varianten",
+        "axe 0",
+        "Lighthouse-Grenzwerte"
+      ],
+      "ice_r": {
+        "impact": 3,
+        "weight": 1,
+        "confidence": 0.9,
+        "effort": 3,
+        "risk": 1,
+        "score": 0.9
+      },
+      "depends_on": [],
+      "conflicts_with": [
+        "Seitenlänge mobil (größere Typografie)"
+      ],
+      "resolution": "Konfliktregel Stabilität/Bedienbarkeit vor Ästhetik: mobile Schrittliste kompakt, doppelte Vorteilszeile mobil entfernt → 7,92/7,82 Bildschirme",
+      "status": "umgesetzt"
+    },
+    {
+      "id": "CON-006",
+      "title": "Beispielpreis Rechner ohne Quelle (42 ct / 14 €)",
+      "areas": [
+        "content",
+        "recht"
+      ],
+      "goal": "G2",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "claims R-02 offen"
+      },
+      "action": "Strom-Beispiel = Grundversorgung SVS „SVSstrom allgemein“ 39,91 ct + 14,98 €/Monat, Quelle sichtbar im Rechner",
+      "acceptance": [
+        "Quelle + Stand sichtbar",
+        "Rechner-Test grün"
+      ],
+      "ice_r": {
+        "impact": 2,
+        "weight": 2,
+        "confidence": 0.8,
+        "effort": 1,
+        "risk": 1,
+        "score": 3.2
+      },
+      "depends_on": [],
+      "conflicts_with": [],
+      "resolution": null,
+      "status": "umgesetzt (Strom) · offen (Gas)"
     }
   ]
 }

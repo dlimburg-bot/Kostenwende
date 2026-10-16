@@ -9,6 +9,7 @@
     "test": "playwright test --grep-invert @visual",
     "test:visual": "playwright test --grep @visual",
     "test:update-baseline": "playwright test --grep @visual --update-snapshots",
+    "design": "node scripts/design-lint.mjs",
     "lh": "node scripts/lighthouse.mjs",
     "smoke:live": "BASE_URL=https://dlimburg-bot.github.io/Kostenwende/ playwright test --grep @smoke",
     "qa": "node scripts/qa.mjs"
@@ -18,5 +19,7 @@
     "@playwright/test": "1.56.0",
     "lighthouse": "12.2.1"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

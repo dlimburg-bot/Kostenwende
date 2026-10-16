@@ -58,7 +58,7 @@ Jeder Konflikt wird im Findings-Register mit `conflicts_with` und der angewandte
 
 ## 6 · Definition of Done (jede Änderung)
 
-- `npm run qa` grün: statische Prüfung, Funktions-, Layout-, A11y- und visuelle Regressionstests.
+- `npm run qa` grün: statische Prüfung, Funktions-, Layout-, A11y- und visuelle Regressionstests, Design-Lint (0 Anti-Muster).
 - Lighthouse (mobil, Median aus 3 Läufen): Performance ≥ 95, Accessibility = 100, Best Practices = 100, SEO = 100,
   CLS ≤ 0,02, LCP ≤ 2,0 s (Labor).
 - 0 JS-Fehler in der Konsole, kein Querscrollen von 320 bis 1280 px, keine abgeschnittenen Buttons.
@@ -71,9 +71,10 @@ Jeder Konflikt wird im Findings-Register mit `conflicts_with` und der angewandte
 npm run check      # statische Prüfung (HTML, JSON-LD, JS-Syntax, Links, Secrets, Claims-Lint) – Sekunden
 npm test           # Playwright: Funktion, Layout, A11y (axe), Formulare mit Mock-Endpunkt
 npm run test:visual # Screenshot-Regression gegen .qa/baseline
+npm run design     # Design-Lint: gerenderte Seite gegen 12 Anti-Muster „generische KI-Website“ (1440/768/390, hell+dunkel)
 npm run lh         # Lighthouse mobil+desktop, 3 Läufe, Median, gegen Grenzwerte
 npm run qa         # alles + Bericht + Freigabe-Marker für den Push-Hook
-npm run serve      # lokaler Server auf :8765 (docs/)
+npm run serve      # lokaler Server auf :8765 (docs/, gzip wie GitHub Pages)
 ```
 
 ## 8 · Arbeitsweise
@@ -88,6 +89,7 @@ npm run serve      # lokaler Server auf :8765 (docs/)
 
 | Komponente | Zweck |
 |---|---|
+| Skill `brand-goldstandard` | **Master-Skill** für Marken-/Design-Durchgänge (12 Phasen, Tore, Design-Lint, Markensystem v3) |
 | Skill `website-audit` | Orchestriert Audits, führt Findings zusammen, priorisiert (ICE-R), löst Konflikte |
 | Skill `seo-local` | Technisches + lokales SEO, strukturierte Daten, Seitenarchitektur |
 | Skill `content-trust` | Inhalte, Belege, Markenstimme, Claims-Prüfung |

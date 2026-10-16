@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-// Gesamtlauf: check → test → test:visual → lh. Nur wenn alles grün ist, entsteht .qa/last-pass.json
+// Gesamtlauf: check → test → test:visual → design → lh. Nur wenn alles grün ist, entsteht .qa/last-pass.json
 // (Commit-Hash + Zeit). Diesen Nachweis verlangt der Push-Hook. Der Nachweis ersetzt NICHT die Freigabe durch Dennis.
 import { execSync } from 'node:child_process';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const steps = [['Statische Prüfung', 'npm run check'], ['Tests', 'npm test'], ['Visuelle Regression', 'npm run test:visual'], ['Lighthouse', 'npm run lh']];
+const steps = [['Statische Prüfung', 'npm run check'], ['Tests', 'npm test'], ['Visuelle Regression', 'npm run test:visual'], ['Design-Lint', 'npm run design'], ['Lighthouse', 'npm run lh']];
 const results = [];
 for (const [name, cmd] of steps) {
   const t = Date.now();

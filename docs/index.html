@@ -11,11 +11,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; base-uri 'self'; form-action 'self'; connect-src 'self' https://hook.eu1.make.com https://cloud.umami.is https://api-gateway.umami.dev; object-src 'none'">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233F6B12'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2315294A'/%3E%3Cpath d='M6 23.5 11.5 17l3.5 3 6-11.5 5 13' fill='none' stroke='%23FFC629' stroke-width='2.8' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-text.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- ===== SEO: Titel & Beschreibung (Keyword vorne, Ort, Nutzen; ≤ 60 / ≤ 155 Zeichen) ===== -->
 <title>Strom &amp; Gas günstiger | Kostenwende Villingen-Schwenningen</title>
@@ -24,8 +24,8 @@
 <meta name="author" content="Dennis Limburg">
 <meta name="geo.region" content="DE-BW">
 <meta name="geo.placename" content="Villingen-Schwenningen">
-<meta name="theme-color" content="#F4F2EA" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1612" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A1220" media="(prefers-color-scheme: dark)">
 <meta name="format-detection" content="telephone=no">
 
 <!-- ===== Open Graph / Social Preview (Bild 1200×630 px bereitstellen) ===== -->
@@ -58,34 +58,40 @@
    1 · DESIGN-TOKENS (Light = Standard, Dark per System oder data-theme)
    ===================================================================== */
 :root{
-  /* Papier, Tinte, Tannengrün – Farbe hat Bedeutung: --save = Ersparnis, --cost = aktuelle Kosten */
-  --bg:#F4F2EA; --surface:#FBFAF5; --surface-2:#ECE8DB; --line:#D6D0BE;
-  --fg:#16211A; --muted:#4D564A; --brand:#1F4D2E; --brand-ink:#FFFFFF;
-  --accent:#9BC53D; --accent-ink:#16211A; --deep:#142019; --deep-fg:#ECEFE6; --deep-muted:#B3BDAE;
-  --save:#3B6E14; --cost:#99540B; --warn:#8A4B08; --focus:#2F6FEB;
-  --radius:8px; --radius-s:6px; --radius-xs:4px;
-  --shadow:0 1px 0 rgba(22,33,26,.04),0 18px 36px -26px rgba(22,33,26,.42);
-  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  /* Nachtblau (aus dem Porträt), Weiß, Signalgelb – Gelb = Handlung & Ergebnis */
+  --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#EEF2F6; --line:#D3DAE3;
+  --fg:#0F1B2D; --muted:#4A5668; --brand:#15294A; --brand-ink:#FFFFFF;
+  --accent:#FFC629; --accent-ink:#0F1B2D; --deep:#14263F; --deep-fg:#FFFFFF; --deep-muted:#B8C3D2;
+  --save:#0B7A4B; --cost:#B7410E; --warn:#9A3412; --focus:#1D4ED8;
+  --mark-bg:#15294A; --mark-fg:#FFC629;
+  --p-muted:#4A5668; --p-line:#D3DAE3; --p-brand:#15294A; --p-brand-ink:#FFFFFF; --p-focus:#1D4ED8;
+  --radius:4px; --radius-s:4px; --radius-xs:2px;
+  --shadow:0 24px 48px -30px rgba(15,27,45,.45);
+  --font:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --display:"Archivo Display","Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --ease:cubic-bezier(.2,.7,.2,1); --dur-1:.15s; --dur-2:.25s; --dur-3:.6s;
   --header-h:64px;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0F1612; --surface:#151E18; --surface-2:#1B261F; --line:#2B382F;
-    --fg:#E9EDE4; --muted:#A9B4A4; --brand:#A6CF52; --brand-ink:#0F1612;
-    --accent:#A6CF52; --accent-ink:#0F1612; --deep:#0A110D; --deep-fg:#E9EDE4; --deep-muted:#A9B4A4;
-    --save:#A6CF52; --cost:#F0B35A; --warn:#F0B35A; --focus:#7FB2FF; --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 36px -24px rgba(0,0,0,.6);
+    --bg:#0A1220; --surface:#111C2E; --surface-2:#15223A; --line:#26354D;
+    --fg:#EAF0F7; --muted:#A3B0C2; --brand:#FFC629; --brand-ink:#0A1220;
+    --accent:#FFC629; --accent-ink:#0A1220; --deep:#12223A; --deep-fg:#FFFFFF; --deep-muted:#AFBBCC;
+    --save:#5BD69A; --cost:#FF8A4C; --warn:#FDBA74; --focus:#93C5FD; --shadow:0 24px 48px -28px rgba(0,0,0,.7);
+    --mark-bg:#FFC629; --mark-fg:#0A1220;
+    --p-muted:#A3B0C2; --p-line:#26354D; --p-brand:#FFC629; --p-brand-ink:#0A1220; --p-focus:#93C5FD;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0F1612; --surface:#151E18; --surface-2:#1B261F; --line:#2B382F;
-  --fg:#E9EDE4; --muted:#A9B4A4; --brand:#A6CF52; --brand-ink:#0F1612;
-  --accent:#A6CF52; --accent-ink:#0F1612; --deep:#0A110D; --deep-fg:#E9EDE4; --deep-muted:#A9B4A4;
-  --save:#A6CF52; --cost:#F0B35A; --warn:#F0B35A; --focus:#7FB2FF; --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 36px -24px rgba(0,0,0,.6);
-  color-scheme:dark;
+  --bg:#0A1220; --surface:#111C2E; --surface-2:#15223A; --line:#26354D;
+    --fg:#EAF0F7; --muted:#A3B0C2; --brand:#FFC629; --brand-ink:#0A1220;
+    --accent:#FFC629; --accent-ink:#0A1220; --deep:#12223A; --deep-fg:#FFFFFF; --deep-muted:#AFBBCC;
+    --save:#5BD69A; --cost:#FF8A4C; --warn:#FDBA74; --focus:#93C5FD; --shadow:0 24px 48px -28px rgba(0,0,0,.7);
+    --mark-bg:#FFC629; --mark-fg:#0A1220;
+    --p-muted:#A3B0C2; --p-line:#26354D; --p-brand:#FFC629; --p-brand-ink:#0A1220; --p-focus:#93C5FD;
+    color-scheme:dark;
 }
 
 /* =====================================================================
@@ -647,164 +653,172 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
   .person .towns li:not(:last-child)::after{content:"·";margin:0 .45em}
 }
 /* =====================================================================
-   DESIGN-SYSTEM v2 · „Die lesbare Rechnung“
-   Leitidee: Kostenwende macht Kosten lesbar wie eine gut gesetzte Abrechnung.
-   Regeln: Farbe bedeutet etwas (Ersparnis = --save, Kosten = --cost) · Linien statt Kästen ·
-   3 Radien (--radius-xs/-s/-m) · 1 Schatten (Papier) · Serif nur für Überschriften und große Zahlen.
+   MARKENSPRACHE v3 · „Wendepunkt“
+   Idee: Kostenwende = der Punkt, an dem Ihre Energiekosten drehen. Signatur: die Wende-Kurve
+   (steigt, kippt, fällt). Farben aus dem echten Porträt abgeleitet: Nachtblau + Signalgelb.
+   Regeln: eine Schriftfamilie (Archivo, OFL, selbst gehostet) · Display nur für Überschriften/Zahlen ·
+   ein Radius (4 px) · keine Pillen, keine Häkchen-Chips, keine Kursiv-Akzente, keine Ornament-Nummern ·
+   Gelb nur für Handlung (Buttons) und Ergebnis (Ersparnis).
    ===================================================================== */
-@font-face{font-family:"Newsreader";src:url(fonts/newsreader-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:optional}
-@font-face{font-family:"Newsreader";src:url(fonts/newsreader-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:optional}
+@font-face{font-family:"Archivo";src:url(fonts/archivo-text.woff2) format("woff2");font-weight:400 700;font-style:normal;font-display:optional}
+@font-face{font-family:"Archivo Display";src:url(fonts/archivo-display.woff2) format("woff2");font-weight:800;font-style:normal;font-display:optional}
 
 /* --- Typografie --- */
-h1,.h1like{font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,7vw,4.4rem);line-height:1.03;letter-spacing:-.02em}
-h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.015em}
-.hero h1 em,.hero .h1like em{font-style:italic;color:var(--brand);text-decoration:none}
-.js .hero h1 em,.js .hero .h1like em{animation:none}
-.panel h2{font-size:1.5rem}
-.spar,.fact b,.kpi b{font-family:var(--serif);font-weight:500;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.01em}
-.brand b{font-family:var(--serif);font-weight:500;font-size:1.45rem;letter-spacing:-.01em}
-.brand b i{font-style:italic;color:var(--brand)}
+body{font-family:var(--font);font-size:1.0625rem;letter-spacing:-.003em}
+h1,h2,.h1like,.spar,.fact b,.kpi b,.brand b,.steps li::before,.sim-out .spar{font-family:var(--display);font-weight:800;font-style:normal}
+h1,.h1like{font-size:clamp(2.5rem,7.6vw,4.25rem);line-height:.98;letter-spacing:-.035em}
+h2{font-size:clamp(1.9rem,4.8vw,3.25rem);line-height:1.02;letter-spacing:-.03em}
+h3{font-size:1.1875rem;font-weight:700;letter-spacing:-.01em}
+.hero h1 em,.hero .h1like em,.js .hero h1 em,.js .hero .h1like em{font-style:normal;color:inherit;text-decoration:none;animation:none}
+.lead{font-size:1.1875rem;line-height:1.55}
+.eyebrow{font-size:.95rem;font-weight:600;letter-spacing:0;text-transform:none;color:var(--muted)}
+.deep .eyebrow{color:var(--deep-muted)}
+.head{gap:14px;margin-bottom:40px;max-width:820px}
 
-/* --- Abschnittsnummern wie in einem Dokument (01, 02 …) --- */
-.view{counter-reset:abschnitt}
-.view section .eyebrow{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.14em}
-.view section .eyebrow::before{counter-increment:abschnitt;content:counter(abschnitt,decimal-leading-zero);font:500 1rem/1 var(--serif);letter-spacing:0}
-.view section .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:currentColor;opacity:.5}
+/* --- Flächen: Weiß, Kühlgrau, Nachtblau; Gelb als Handlungsband --- */
+section{padding-block:64px}
+.band{background:var(--surface-2)}
+.deep{background:var(--deep);color:var(--deep-fg);--focus:var(--accent);--brand:var(--accent);--brand-ink:var(--accent-ink)}
+.card{border-radius:var(--radius);box-shadow:none;border:1px solid var(--line)}
+@media (hover:hover){.card:hover{translate:none;border-color:var(--fg)}}
+.spot::after{display:none!important}
 
-/* --- Buttons: ruhig, präzise, ohne Glanz --- */
-.btn{border-radius:var(--radius-s);font-weight:650}
+/* --- Buttons: kantig, satt, ohne Glanz --- */
+.btn{border-radius:var(--radius);font:700 1rem/1.2 var(--font);min-height:52px;padding:14px 24px;letter-spacing:-.005em}
 .btn:hover{transform:none}
 .btn:active{transform:translateY(1px)}
-.btn-primary{box-shadow:none}
-.btn-primary:hover{background:color-mix(in srgb,var(--brand) 84%,#000)}
+.btn-primary{background:var(--brand);color:var(--brand-ink);box-shadow:none}
+.btn-primary:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
 .btn-accent:hover{background:color-mix(in srgb,var(--accent) 88%,#000)}
 .btn-primary::after,.btn-accent::after{display:none}
-.btn-ghost:hover{background:color-mix(in srgb,currentColor 6%,transparent)}
+.btn-ghost{border-width:2px}
+.btn-ghost:hover{background:color-mix(in srgb,currentColor 8%,transparent)}
 
-/* --- Kopfzeile --- */
-.tabs,.tabs a,.theme-btn{border-radius:var(--radius-s)}
-.tabs::before{border-radius:var(--radius-xs)}
-.progress{background:var(--brand)}
+/* --- Kopfzeile: Wortmarke + Kurve, Reiter als Unterstreichung --- */
+.site-head{background:var(--bg);border-bottom:1px solid var(--line)}
+@media (hover:hover) and (pointer:fine) and (min-width:960px){.site-head{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}}
 .site-head.scrolled{box-shadow:0 1px 0 var(--line)}
+.brand{flex-direction:row;align-items:center;gap:10px}
+.brand .mark{width:34px;height:34px;flex:none;color:var(--fg)}
+.brand .mark rect{fill:var(--mark-bg)}
+.brand .mark path{fill:none;stroke:var(--mark-fg);stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
+.brand .brand-t{display:flex;font-size:inherit;color:inherit}
+.brand .brand-t span{color:var(--muted)}
+.brand-t{display:flex;flex-direction:column;line-height:1.05}
+.brand b{font-size:1.3rem;letter-spacing:-.03em}
+.brand b i{font-style:normal;color:inherit}
+.tabs{background:none;border:0;border-radius:0;padding:0;gap:4px}
+.tabs a{border-radius:0;color:var(--muted);padding:10px 12px}
+.tabs a[aria-current="page"]{color:var(--fg)}
+.tabs::before{inset:auto auto 0 0;width:50%;height:3px;border-radius:0;background:var(--fg)}
+.theme-btn{border-radius:var(--radius)}
+.progress{background:var(--accent);height:3px}
 
-/* --- Start: ruhiges Papier, linke Spalte bleibt am Desktop stehen (Gleichgewicht zum langen Rechner) --- */
-.hero{background:var(--bg)}
-.advisor{padding-top:18px;border-top:1px solid var(--line)}
-.advisor img{box-shadow:none;border:1px solid var(--line)}
-.aud-switch button{border-radius:var(--radius-s)}
-.proof svg{color:var(--save)}
-@media (min-width:960px){.hero-copy{position:sticky;top:calc(var(--header-h) + 40px)}}
+/* --- Hero: Nachtblau, echtes Porträt, Wende-Kurve --- */
+.hero{background:var(--deep);color:var(--deep-fg);--muted:var(--deep-muted);--line:rgba(255,255,255,.22);--focus:var(--accent);
+  --brand:var(--accent);--brand-ink:var(--accent-ink);padding-block:40px 56px}
+.hero .wrap{z-index:1}
+.hero .lead{color:var(--deep-fg);opacity:.9}
+.hero .btn-ghost{color:var(--deep-fg)}
+.hero-kurve{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;max-width:none;z-index:0;pointer-events:none;color:var(--accent)}
+.hero-kurve path{fill:none;stroke:currentColor;stroke-width:3;vector-effect:non-scaling-stroke;opacity:.9}
+.hero-kurve circle{fill:currentColor}
+.aud-switch button{border-radius:var(--radius);background:transparent;border:1.5px solid rgba(255,255,255,.35);color:var(--deep-fg)}
+.aud-switch button:hover{border-color:var(--deep-fg)}
+.aud-switch button[aria-pressed="true"]{background:var(--deep-fg);color:var(--deep);border-color:var(--deep-fg)}
+.advisor{padding-top:18px;border-top:1px solid rgba(255,255,255,.18)}
+.advisor img{box-shadow:none;width:56px;height:56px}
+.advisor .muted{color:var(--deep-muted)}
+.proof{gap:0;color:var(--deep-muted);font-size:.9375rem}
+.proof svg{display:none}
+.proof li+li::before{content:"";width:1px;height:14px;background:rgba(255,255,255,.3);margin:0 14px}
 
-/* --- Rechner als Beleg: Perforation, Positionen, Summenstrich --- */
-.panel{background:var(--surface);border-radius:var(--radius-xs);box-shadow:var(--shadow);position:relative;padding:26px 20px 22px}
-.panel::before{content:"";position:absolute;left:0;right:0;top:-1px;height:7px;pointer-events:none;
-  background:radial-gradient(circle at 6px -1px,var(--bg) 4.5px,transparent 5px) 0 0/12px 7px repeat-x}
-.seg,.chips button,.field input:not([type=range]),.field select,.exact,.bill{border-radius:var(--radius-s)}
-.seg label{border-radius:var(--radius-xs)}
-.q-dots i{border-radius:1px}
-.q-n{font:500 .95rem/1 var(--serif);background:transparent;border:1px solid var(--line)}
-.q.done .q-n{border-color:var(--brand)}
-.bill-r.hl{border-radius:var(--radius-xs);box-shadow:inset 3px 0 0 var(--save)}
-.result{background:transparent;color:var(--fg);padding:14px 0 0;border-radius:0;border-top:1.5px solid var(--fg);
-  --deep-fg:var(--fg);--deep-muted:var(--muted);--accent:var(--brand);--accent-ink:var(--brand-ink)}
-.result .row{padding-bottom:10px;border-bottom:1px dotted var(--line)}
-.spar-row{padding-top:10px;border-top:3px double var(--save)}
-.result .row+.spar-row{border-top:3px double var(--save)}
-.spar{color:var(--save)}
-.ring-bg{stroke:var(--line)}
-.ring-fg{stroke:var(--save)}
-.cmp-bar{background:var(--surface-2);border-radius:1px}
-.cmp-bar i{background:var(--save);border-radius:1px}
-.cmp-bar i.high{background:var(--cost)}
-.cmp-bar i.avg{background:var(--muted)}
-.loss b{color:var(--save)}
-.lead-tabs{background:var(--surface-2);border-radius:var(--radius-s)}
-.lead-tabs button{border-radius:var(--radius-xs);color:var(--fg)}
-.qf input,.qf select{border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:var(--radius-s)}
-.qf input:focus,.qf select:focus{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
-.qf .check a{color:var(--brand)}
-.file{border-color:var(--brand);border-radius:var(--radius-s)}
-.qf .file{color:var(--brand)}
-.form-status{color:var(--brand)}
-.form-status.err{color:var(--warn)}
-.risk li::before{color:var(--save)}
+/* --- Rechner: weißes Werkzeug auf Nachtblau; Ergebnis als nachtblaue Ergebnisfläche --- */
+.panel{--muted:var(--p-muted);--line:var(--p-line);--brand:var(--p-brand);--brand-ink:var(--p-brand-ink);--focus:var(--p-focus);
+  background:var(--surface);color:var(--fg);border:0;border-radius:var(--radius);padding:24px 20px;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}
+.panel h2{font-size:1.6rem;letter-spacing:-.025em}
+.q-dots i{border-radius:0;height:4px}
+.q-n{border-radius:var(--radius);background:var(--surface-2);font-weight:800}
+.seg{border-radius:var(--radius)}
+.seg label{border-radius:2px}
+.chips button,.field input:not([type=range]),.field select,.exact,.bill{border-radius:var(--radius)}
+.chips button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand);box-shadow:none}
+.chips button[aria-pressed="true"] small{color:inherit;opacity:.85}
+.exact{border-style:solid}
+.bill-r.hl{border-radius:2px;box-shadow:inset 3px 0 0 var(--brand)}
+.result{background:var(--deep);color:var(--deep-fg);border-radius:var(--radius);padding:18px;--deep-fg:#FFFFFF}
+.result .row{border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:10px}
+.spar{color:var(--accent);font-size:clamp(2rem,6.4vw,2.8rem);letter-spacing:-.03em}
+.ring-bg{stroke:rgba(255,255,255,.16)}
+.ring-fg{stroke:var(--accent);stroke-linecap:butt}
+.cmp-bar{border-radius:0;height:6px}
+.cmp-bar i{border-radius:0}
+.cmp-bar i.high{background:#FF8A4C}
+.loss b{color:var(--accent)}
+.risk li::before{content:"·  ";color:var(--accent)}
+.lead-tabs{background:rgba(255,255,255,.08);border-radius:var(--radius)}
+.lead-tabs button{border-radius:2px}
+.qf input,.qf select{border-radius:var(--radius)}
+.file{border-radius:var(--radius);border-style:solid}
+.r-src{color:var(--muted)}
 
-/* --- Kennzahlen als Positionen statt Karten --- */
-.facts{gap:22px 20px}
-.fact{background:none;border:0;border-top:1px solid color-mix(in srgb,var(--deep-fg) 26%,transparent);border-radius:0;padding:14px 0 0}
-.fact b{font-size:clamp(2rem,5vw,2.75rem)}
-.chart{background:none;border:0;border-top:1px solid color-mix(in srgb,var(--deep-fg) 26%,transparent);border-radius:0;padding:18px 0 0}
-
-/* --- Ablauf als Zeitleiste --- */
-.steps{gap:0}
-.steps li{background:none;border:0;border-radius:0;padding:0 0 26px 58px}
-.steps li::before{left:0;top:-4px;width:40px;height:40px;background:var(--bg);color:var(--brand);border:1.5px solid var(--brand);font:500 1.2rem/1 var(--serif)}
-.steps li::after{content:"";position:absolute;left:20px;top:40px;bottom:0;width:1px;background:var(--line)}
-.steps li:last-child{padding-bottom:0}
-.steps li:last-child::after{display:none}
-
-/* --- Vertrauen als Prüfprotokoll (Linien statt Kästen) --- */
-.trust{gap:0}
-.trust .card{background:none;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;padding:20px 0}
-.partners li{border-radius:var(--radius-xs);background:var(--surface)}
-.logo-chip{border-radius:var(--radius-xs)}
-
-/* --- Flächen allgemein: flach, ohne Schwebe-Effekte --- */
-.card{border-radius:var(--radius);box-shadow:none}
-.spot::after{display:none!important}
-.kpi{border-radius:var(--radius-s)}
-.aud .tag,.towns li{border-radius:var(--radius-xs)}
-.cond{border-radius:var(--radius);border-left-width:3px}
-.c3,.yn button,.table-wrap{border-radius:var(--radius-s)}
-.ok-list li::before,.no-list li::before{border-radius:var(--radius-xs)}
-.nudge,.nachweis-dlg{border-radius:var(--radius)}
-.nachweis img,.nachweis-dlg img{border-radius:var(--radius-xs)}
-.portrait{box-shadow:0 0 0 1px var(--line)}
-
-/* --- FAQ als redaktionelle Liste --- */
-.faq{gap:0;border-top:1px solid var(--line)}
-.faq details{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0}
-.faq summary{padding:18px 44px 18px 0}
-.faq summary::after{right:8px}
-.faq details p{padding:0 0 18px}
-
-/* Person: Überschrift-Label am Handy unsichtbar, zählt aber für die Abschnittsnummer */
-@media (max-width:639px){.person .stack>.eyebrow{display:flex;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
-
-/* --- Breakpoints v2 --- */
-@media (hover:hover){.card:hover{translate:none;border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}}
-@media (min-width:640px){
-  .steps{gap:28px}
-  .steps li{padding:58px 0 0}
-  .steps li::before{top:0}
-  .steps li::after{left:52px;right:-16px;top:20px;bottom:auto;width:auto;height:1px}
-  .trust{gap:0 32px}
-}
-@media (min-width:960px){
-  .facts{gap:0;border-top:1px solid color-mix(in srgb,var(--deep-fg) 26%,transparent)}
-  .fact{border-top:0;border-left:1px solid color-mix(in srgb,var(--deep-fg) 26%,transparent);padding:18px 24px 4px}
-  .fact:first-child{border-left:0;padding-left:0}
-}
-
-
-/* --- Feinschliff v2 (Browser-Abnahme Runde 1) --- */
-.deep{--save:var(--accent)}   /* Spar-Grün auf dunklen Flächen: helle Variante (Kontrast ≥ 4,5 : 1) */
-.hero .eyebrow::after{display:none}
-.switch-band h2{font-size:clamp(1.5rem,3.6vw,2.25rem)}
+/* --- Kennzahlen: große Display-Zahlen, Spalten mit Haarlinien --- */
+.facts{gap:28px 24px}
+.fact{background:none;border:0;border-top:1px solid rgba(255,255,255,.2);border-radius:0;padding:16px 0 0}
+.fact b{font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:-.035em;color:var(--accent)}
+.chart{background:none;border:0;border-top:1px solid rgba(255,255,255,.2);border-radius:0;padding:20px 0 0}
 .chart-more .chart{max-width:760px}
-.trust .card{padding:18px 0}
-@media (max-width:639px){
-  .hero .eyebrow{font-size:.72rem;letter-spacing:.1em}
-  .faq summary{padding:14px 40px 14px 0}
-  .steps li{padding-bottom:18px}
-  .trust.rail>.card{border-top:1px solid var(--line);padding:16px 0 4px}
-}
-@media (min-width:960px){
-  #faq>.wrap,#p-faq>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px;align-items:start}
-  #faq .head,#p-faq .head{margin-bottom:0;position:sticky;top:calc(var(--header-h) + 32px)}
-  #faq .faq,#p-faq .faq{max-width:none}
-}
-/* Runde 2: Partner-Nachweise als Randnotiz zur Zeitleiste statt Bildwand */
+
+/* --- Ablauf: große Ziffern, dicke Oberkante, keine Kreise --- */
+.steps{gap:0}
+.steps li{background:none;border:0;border-top:4px solid var(--fg);border-radius:0;padding:18px 0 28px 0}
+.steps li::before{position:static;display:block;width:auto;height:auto;background:none;color:var(--fg);border-radius:0;
+  font-size:3.25rem;line-height:1;letter-spacing:-.04em;margin-bottom:14px;content:counter(s)}
+.table-wrap{border-radius:var(--radius)}
+thead th{letter-spacing:0;text-transform:none;font-size:.875rem}
+
+/* --- Vertrauen, Person, Partner-Karten --- */
+.trust{gap:0}
+.trust .card{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:20px 0}
+.partners li,.logo-chip,.towns li,.aud .tag,.kpi{border-radius:var(--radius)}
+.partners li{background:var(--surface);border:1px solid var(--line)}
+.aud .tag{letter-spacing:0;text-transform:none;font-size:.875rem;background:var(--accent);color:var(--accent-ink)}
+.portrait{box-shadow:none;border-radius:50%}
+.towns li{background:none}
+.kpi{background:var(--surface-2)}
+.kpi b{font-size:1.9rem;letter-spacing:-.03em;color:var(--fg)}
+.cond{border-radius:var(--radius);border-left:6px solid var(--accent)}
+.c3,.yn button,.ok-list li::before,.no-list li::before{border-radius:var(--radius)}
+.check3.match .c3-out{color:var(--accent)}
+.nudge,.nachweis-dlg{border-radius:var(--radius)}
+.nachweis img,.nachweis-dlg img{border-radius:2px}
+.rail-dots span{border-radius:0}
+
+/* --- FAQ: Plus/Minus statt Chevron --- */
+.faq{gap:0;border-top:2px solid var(--fg)}
+.faq details{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0}
+.faq summary{padding:20px 48px 20px 0;font-size:1.0625rem}
+.faq summary::after,.faq details[open] summary::after{content:"+";border:0;width:auto;height:auto;right:4px;transform:translateY(-50%);
+  font:800 1.6rem/1 var(--display);transition:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px}
+
+/* --- Brücke: Signalgelbes Handlungsband --- */
+.switch-band{background:var(--accent);color:var(--accent-ink);--deep-muted:#3A3420;--focus:#15294A}
+.switch-band .muted{color:#3A3420}
+.switch-band .eyebrow{color:#3A3420}
+.switch-band .btn-accent,.switch-band .btn-primary{background:#15294A;color:#FFFFFF}
+.switch-band h2{font-size:clamp(1.6rem,3.8vw,2.5rem)}
+
+/* --- Kontakt, Fuß, Aktionsleiste --- */
+.contact .card{border:2px solid var(--fg)}
+.contact-list a{border-bottom:2px solid var(--accent)}
+.site-foot{background:var(--deep)}
+.mbar{border-top:1px solid var(--line)}
+.mbar .btn{min-height:50px}
+
+/* --- Nachweise --- */
 #nachweise-partner{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
 .nachweis b{hyphens:auto;overflow-wrap:break-word}
 @media (min-width:640px){#nachweise-partner .nachweis img{max-height:170px}}
@@ -812,6 +826,64 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
   #nachweise-partner{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start}
   #nachweise-partner .nachweise{gap:14px}
   #nachweise-partner .nachweis img{max-height:150px}
+}
+
+/* --- Mobil --- */
+@media (max-width:639px){
+  section{padding-block:44px}
+  .hero{padding-block:28px 64px}
+  .proof{gap:2px 18px}
+  .proof li+li::before{display:none}
+  .steps li{padding:14px 0 20px}
+  .steps li::before{font-size:2.6rem;margin-bottom:8px}
+  .faq summary{padding:16px 40px 16px 0}
+  .trust.rail>.card{border-top:1px solid var(--line);padding:16px 0 4px}
+  .person .stack>.eyebrow{display:flex;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+/* --- Tablet/Desktop --- */
+@media (min-width:640px){
+  .steps{gap:32px}
+  .trust{gap:0 32px}
+}
+@media (min-width:960px){
+  section{padding-block:96px}
+  .hero{padding-block:64px 104px}
+  .hero-copy{padding-top:24px}
+  .facts{gap:0;border-top:1px solid rgba(255,255,255,.2)}
+  .fact{border-top:0;border-left:1px solid rgba(255,255,255,.2);padding:20px 24px 4px}
+  .fact:first-child{border-left:0;padding-left:0}
+  #faq>.wrap,#p-faq>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:64px;align-items:start}
+  #faq .head,#p-faq .head{margin-bottom:0;position:sticky;top:calc(var(--header-h) + 32px)}
+  #faq .faq,#p-faq .faq{max-width:none}
+}
+
+.hero .aud .card{background:transparent;border-color:rgba(255,255,255,.25);color:var(--deep-fg)}
+
+/* Lint-Korrekturen v3: Listenmarke als Strich statt Häkchen, Radien auf das System */
+.skip{border-radius:var(--radius)}
+.legend i{border-radius:var(--radius-xs)}
+.ok-list li::before{content:"";top:.72em;width:14px;height:3px;border-radius:0;background:var(--brand)}
+.ok-list li{padding-left:28px}
+/* Fakten: Zahl bleibt eine Zeile; Kontakt-Überschrift im schmalen Raster kleiner; Hero-Text bleibt am Desktop stehen */
+.fact b{white-space:nowrap;font-size:clamp(2.1rem,4.4vw,3.2rem)}
+.contact h2{font-size:clamp(1.9rem,3.6vw,2.75rem)}
+@media (min-width:960px){.hero-copy{position:sticky;top:calc(var(--header-h) + 40px)}}
+/* Browser-Abnahme v3: KPI-Raster im schmalen Panel 2×2; Regeln und KI-Paket als Linienliste statt Kartenraster */
+.panel .kpis{grid-template-columns:1fr 1fr}
+.kpi b{white-space:nowrap;font-size:clamp(1.5rem,2.6vw,1.9rem)}
+.rules .card,#ki-paket .grid>.card{background:none;border:0;border-top:2px solid var(--fg);border-radius:0;padding:16px 0 4px}
+#ki-paket .grid>.card.policy{border-top:2px solid var(--fg)}
+/* Mobil kompakt (≤ 8 Bildschirme): Ziffer neben dem Schritt statt darüber, ruhigere Textgröße */
+@media (max-width:639px){
+  body{font-size:1rem}
+  .lead{font-size:1.0625rem}
+  section{padding-block:40px}
+  .hero{padding-block:24px 48px}
+  .steps li{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:10px;padding:12px 0 14px}
+  .steps li::before{grid-row:1 / span 2;font-size:2.3rem;margin:0}
+  .steps li>*{grid-column:2}
+  .steps h3{margin-bottom:2px}
+  .hero .proof{display:none} /* steht mobil direkt am Rechner (Kostenlos · Unverbindlich · Kein Versorgungsausfall) */
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -832,8 +904,9 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#sparen" data-go="sparen">
-      <b>Kosten<i>wende</i></b>
-      <span>Strom &amp; Gas günstiger · Schwarzwald-Baar</span>
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="4"/><path d="M6 23.5 11.5 17l3.5 3 6-11.5 5 13"/></svg>
+      <span class="brand-t"><b>Kosten<i>wende</i></b>
+      <span>Strom &amp; Gas günstiger · Schwarzwald-Baar</span></span>
     </a>
     <nav class="tabs" data-view="sparen" aria-label="Bereiche der Seite">
       <a href="#sparen" data-go="sparen" aria-current="page">Sparen</a>
@@ -856,6 +929,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
 
   <!-- ===== A · ATTENTION: Hero mit Hook, Subline, CTA, Beweiszeile ===== -->
   <section class="hero" id="sparen" aria-labelledby="h1">
+    <svg class="hero-kurve" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 186 L220 168 L400 178 L620 128 L800 144 L1010 62 L1110 30 L1200 112 L1440 196"/></svg>
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow">Kostenloser Tarif-Check · Villingen-Schwenningen &amp; Rottweil</p>
@@ -928,20 +1002,20 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
           <div class="fields">
             <div class="field">
               <label for="arbeitspreis">Arbeitspreis ct/kWh</label>
-              <input id="arbeitspreis" type="text" inputmode="decimal" autocomplete="off" value="42">
+              <input id="arbeitspreis" type="text" inputmode="decimal" autocomplete="off" value="39,91">
             </div>
             <div class="field">
               <label for="grundpreis">Grundpreis €/Monat</label>
-              <input id="grundpreis" type="text" inputmode="decimal" autocomplete="off" value="14">
+              <input id="grundpreis" type="text" inputmode="decimal" autocomplete="off" value="14,98">
             </div>
           </div>
           <p class="dec-t">So finden Sie die Werte auf Ihrer Jahresabrechnung:</p>
           <div class="bill" aria-hidden="true">
             <div class="bill-h">Jahresabrechnung Strom · Beispiel</div>
             <div class="bill-r hl"><span>① Verbrauch 01.01.–31.12.</span><b>3.500 kWh</b></div>
-            <div class="bill-r hl"><span>② Arbeitspreis</span><b>42,00 ct/kWh</b></div>
-            <div class="bill-r hl"><span>③ Grundpreis</span><b>14,00 €/Monat</b></div>
-            <div class="bill-r"><span>Gesamtbetrag</span><b>1.638,00 €</b></div>
+            <div class="bill-r hl"><span>② Arbeitspreis</span><b>39,91 ct/kWh</b></div>
+            <div class="bill-r hl"><span>③ Grundpreis</span><b>14,98 €/Monat</b></div>
+            <div class="bill-r"><span>Gesamtbetrag</span><b>1.576,61 €</b></div>
           </div>
           <p class="sr-only">Auf der Jahresabrechnung stehen der Verbrauch in kWh, der Arbeitspreis in Cent je kWh und der monatliche Grundpreis.</p>
         </details>
@@ -1210,6 +1284,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
 
   <!-- ===== A · ATTENTION: Partner-Hero ===== -->
   <section class="hero" id="partner" aria-labelledby="p-h">
+    <svg class="hero-kurve" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 186 L220 168 L400 178 L620 128 L800 144 L1010 62 L1110 30 L1200 112 L1440 196"/></svg>
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow">Partner werden · nebenberuflich oder als Unternehmer</p>
@@ -1501,9 +1576,12 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
 
   /* ---------- 1 · Zentrale Daten (hier pflegen) ---------- */
   const DATA = {
-    strom: { avg: 37.0, avgSrc: 'BDEW 08/2026', grund: 0.16, ort: 0.08, ap: 42, gp: 14,
+    strom: { avg: 37.0, avgSrc: 'BDEW 08/2026', grund: 0.16, ort: 0.08, ap: 39.91, gp: 14.98,
+             // Beispielpreis = Grundversorgung Stadtwerke Villingen-Schwenningen „SVSstrom allgemein“, laut stromvermittlung.de und
+             // stromauskunft.de (beide 1.576,61 € bei 3.500 kWh), Stand 16.10.2026 – Claim R-02
+             exSrc: 'Grundversorgung SVS Villingen-Schwenningen laut Vergleichsportalen, Stand 16.10.2026',
              hint: 'Steht auf Ihrer Jahresabrechnung. Oben genügt ein typischer Wert.' },
-    gas:   { avg: 12.1, avgSrc: 'Bundesnetzagentur, Frühjahr 2025', grund: 0.04, ort: 0.02, ap: 12, gp: 15,
+    gas:   { avg: 12.1, avgSrc: 'Bundesnetzagentur, Frühjahr 2025', grund: 0.04, ort: 0.02, ap: 12, gp: 15, exSrc: '',
              hint: 'Steht auf Ihrer Jahresabrechnung. Oben genügt ein typischer Wert.' }
   };
   const TARIF_SRC = 'Verivox 06/2026';
@@ -1572,7 +1650,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
       b.setAttribute('aria-pressed', String(dark));
       if (b.classList.contains('link-btn')) b.textContent = 'Dunkles Design: ' + (dark ? 'an' : 'aus');
     });
-    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', dark ? '#0F1612' : '#F4F2EA'));
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', dark ? '#0A1220' : '#FFFFFF'));
   };
   document.querySelectorAll('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {
     const next = isDark() ? 'light' : 'dark';
@@ -1713,7 +1791,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
     const own = ap !== d.ap || gp !== d.gp;
     $('r-kosten-l').textContent = own ? 'Ihre Kosten pro Jahr' : 'Geschätzte Kosten pro Jahr';
     $('r-src').textContent = `Marktwert: Abstand zum günstigsten Tarif laut ${TARIF_SRC}; mein TELESON-Angebot kann abweichen. Ø-Preis ${d.avgSrc}. `
-      + (own ? '' : `Beispielpreis ${ct1.format(d.ap)} ct/kWh und ${eur.format(d.gp)}/Monat, bis Sie Ihre Preise eingeben. `)
+      + (own ? '' : `Beispielpreis ${d.ap.toLocaleString('de-DE')} ct/kWh und ${d.gp.toLocaleString('de-DE',{minimumFractionDigits:2})} €/Monat${d.exSrc ? ' (' + d.exSrc + ')' : ''}, bis Sie Ihre Preise eingeben. `)
       + 'Keine Garantie.';
     if (!v || !ap) {
       ['r-kosten', 'r-spar'].forEach((id) => setText($(id), '–'));
@@ -1766,7 +1844,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,4.4vw,2.75re
     vRange.min = mn; vRange.max = mx; vRange.step = st;
     const def = AUD[aud].presets[a][AUD[aud].def[a]][1];
     $('verbrauch').value = def; vRange.value = def;
-    $('arbeitspreis').value = d.ap; $('grundpreis').value = d.gp;
+    $('arbeitspreis').value = d.ap.toLocaleString('de-DE'); $('grundpreis').value = d.gp.toLocaleString('de-DE');
     $('hint-verbrauch').textContent = d.hint;
     renderPresets(); markPreset(); calc(false);
   };
