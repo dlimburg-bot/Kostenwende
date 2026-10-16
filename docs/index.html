@@ -361,6 +361,8 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
 .file:focus-within{outline:3px solid var(--focus);outline-offset:2px}
 .form-status{font-size:.875rem;font-weight:600;color:var(--accent);min-height:1.4em}
 .form-status.err{color:#FFB8AD}
+.form-fallback{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.form-fallback a:not(.btn){color:var(--accent);font-weight:700;min-height:48px;display:inline-flex;align-items:center}
 .legal{max-width:760px;display:grid;gap:14px}
 .legal h2{margin-top:8px}
 .legal h3{margin-top:10px}
@@ -1120,6 +1122,10 @@ body:has(#view-recht:not([hidden])) .site-head{background:var(--deep)}
               <button class="btn btn-accent" type="submit" id="rr-submit">Kostenlosen Rückruf anfordern</button>
               <p class="small" style="color:var(--deep-muted)">Ihre Angaben gehen verschlüsselt direkt an mich. Ich rufe nur zurück, weil Sie es wünschen.</p>
               <p class="form-status" role="status" aria-live="polite"></p>
+              <div class="form-fallback" hidden>
+                <a class="btn btn-accent" data-fb="wa" href="https://wa.me/491786128036" target="_blank" rel="noopener">Per WhatsApp senden</a>
+                <a href="tel:+491786128036">0178 6128036 anrufen</a>
+              </div>
             </form>
           </div>
           <!-- Risikoumkehr direkt an der Handlung -->
@@ -2048,9 +2054,13 @@ body:has(#view-recht:not([hidden])) .site-head{background:var(--deep)}
     a.href = wa(text); a.target = '_blank'; a.rel = 'noopener';
     document.body.appendChild(a); a.click(); a.remove();
   };
-  const send = async (form, quelle, endpoint) => {
-    const status = form.querySelector('.form-status'), btn = form.querySelector('[type="submit"]');
+  const SEND_TIMEOUT = 15000;                                // ms; danach gilt die Anfrage als nicht angekommen
+  const send = async (form, quelle, endpoint, fallbackText) => {
+    const status = form.querySelector('.form-status'), btn = form.querySelector('[type="submit"]'), fb = form.querySelector('.form-fallback');
     status.classList.remove('err'); status.textContent = 'Wird gesendet …'; btn.disabled = true;
+    if (fb) fb.hidden = true;
+    const ctrl = 'AbortController' in window ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), SEND_TIMEOUT) : 0;
     try {
       const fd = new FormData(form);
       if (fd.get('website')) { form.reset(); status.textContent = 'Danke!'; return; }   // Honeypot: Bot erkannt → nichts senden
@@ -2058,21 +2068,32 @@ body:has(#view-recht:not([hidden])) .site-head{background:var(--deep)}
       // Kontext aus dem Rechner: hilft bei der Vorbereitung und der Priorisierung (A/B) im Make-Szenario
       fd.append('quelle', quelle); fd.append('zielgruppe', aud); fd.append('energie', art === 'strom' ? 'Strom' : 'Gas');
       fd.append('verbrauch', String(num('verbrauch') || '')); fd.append('tarif', $('tarif').value); fd.append('ersparnis', String(Math.round(lastSpar)));
-      // no-cors: Versand klappt unabhängig von CORS-Headern; Netzwerkfehler werden trotzdem erkannt
-      await fetch(endpoint, { method: 'POST', body: fd, mode: 'no-cors' });
+      // Erfolg nur mit Bestätigung durch Make ({"ok":true}, CORS-Header kommt aus dem Make-Szenario).
+      // Früher no-cors: Antwort unlesbar → „Danke“ auch bei Make-Fehler/Kontingent leer (Finding LEAD-001).
+      const res = await fetch(endpoint, { method: 'POST', body: fd, signal: ctrl ? ctrl.signal : undefined });
+      const data = res.ok ? await res.json().catch(() => null) : null;
+      if (!data || data.ok !== true) throw new Error('Nicht bestätigt (HTTP ' + res.status + ')');
       form.reset(); $('foto-name').textContent = FILE_HINT;
       status.textContent = quelle === 'rueckruf' ? 'Danke! Ich rufe Sie zur gewünschten Zeit zurück.' : 'Danke! Ich melde mich zeitnah bei Ihnen.';
       track('anfrage_gesendet', { weg: quelle });
     } catch (err) {
-      status.classList.add('err'); status.textContent = 'Senden fehlgeschlagen. Bitte rufen Sie an: 0178 6128036.';
-    } finally { btn.disabled = false; }
+      // Eingaben bleiben stehen; WhatsApp-Weg mit denselben Angaben als Ersatz
+      status.classList.add('err');
+      status.textContent = 'Ihre Anfrage ist leider nicht bei mir angekommen. Bitte senden Sie sie per WhatsApp oder rufen Sie mich an.';
+      if (fb) { fb.querySelector('[data-fb="wa"]').href = wa(fallbackText || 'Hallo Dennis, ich möchte meinen Tarif prüfen lassen.'); fb.hidden = false; }
+      track('anfrage_fehler', { weg: quelle });
+    } finally { clearTimeout(timer); btn.disabled = false; }
   };
   $('f-foto').addEventListener('submit', (e) => { e.preventDefault(); send(e.currentTarget, 'foto', CONFIG.uploadEndpoint); });
+  const rrText = (f) => {
+    const val = (n) => f.elements.namedItem(n).value.trim();
+    return `Hallo Dennis, bitte rufen Sie mich zurück.\nName: ${val('kontaktname')}\nTelefon: ${val('telefon')}\nBeste Zeit: ${val('zeit')}`;
+  };
   $('f-rueckruf').addEventListener('submit', (e) => {
     e.preventDefault();
-    const f = e.currentTarget, val = (n) => f.elements.namedItem(n).value.trim();
-    if (api) { send(f, 'rueckruf', CONFIG.formEndpoint); return; }
-    openWa(`Hallo Dennis, bitte rufen Sie mich zurück.\nName: ${val('kontaktname')}\nTelefon: ${val('telefon')}\nBeste Zeit: ${val('zeit')}`);
+    const f = e.currentTarget;
+    if (api) { send(f, 'rueckruf', CONFIG.formEndpoint, rrText(f)); return; }
+    openWa(rrText(f));
     f.querySelector('.form-status').textContent = 'WhatsApp ist geöffnet. Bitte dort auf Senden tippen.';
   });
 

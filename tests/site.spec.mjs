@@ -4,6 +4,13 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const errorsOf = (page) => { const e = []; page.on('pageerror', (x) => e.push(x.message)); return e; };
+// Antwort wie im Make-Szenario (Modul „Webhook response“: 200, {"ok":true}, CORS-Header)
+const MAKE_OK = { status: 200, body: '{"ok":true}', headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } };
+const fillRueckruf = async (page) => {
+  await page.fill('#rr-name', 'Test');
+  await page.fill('#rr-tel', '0170 0000000');
+  await page.check('#lp-rueckruf input[name="einwilligung"]');
+};
 
 test.describe('Funktion', () => {
   test('Rechner: deutsches Zahlenformat und Ergebnis', async ({ page }) => {
@@ -36,17 +43,68 @@ test.describe('Funktion', () => {
 
   test('Rückruf-Formular: Pflichtfelder, Mock-Versand, Erfolgsmeldung', async ({ page }) => {
     let body = '';
-    await page.route('https://hook.eu1.make.com/**', (r) => { body = r.request().postData() || ''; r.fulfill({ status: 200, body: '{"ok":true}' }); });
+    await page.route('https://hook.eu1.make.com/**', (r) => { body = r.request().postData() || ''; r.fulfill(MAKE_OK); });
     await page.goto('./');
     await page.click('#lt-rueckruf');
     await page.click('#rr-submit');
     await expect(page.locator('#rr-name')).toHaveJSProperty('validity.valid', false);
-    await page.fill('#rr-name', 'Test');
-    await page.fill('#rr-tel', '0170 0000000');
-    await page.check('#lp-rueckruf input[name="einwilligung"]');
+    await fillRueckruf(page);
     await page.click('#rr-submit');
     await expect(page.locator('#lp-rueckruf .form-status')).toContainText('Danke');
+    await expect(page.locator('#lp-rueckruf .form-fallback')).toBeHidden();
     expect(body).toContain('einwilligung');
+  });
+
+  // LEAD-001: „Danke“ nur, wenn Make die Anfrage bestätigt. Sonst Hinweis + WhatsApp-Ersatz mit den Eingaben.
+  const failures = {
+    'Make antwortet 500': (r) => r.fulfill({ status: 500, body: 'error' }),
+    'Netzwerkfehler': (r) => r.abort('failed'),
+    'Antwort ohne Bestätigung (Make-Standard „Accepted“, kein CORS-Header)': (r) => r.fulfill({ status: 200, body: 'Accepted' }),
+    'Antwort 200, aber ok ≠ true': (r) => r.fulfill({ ...MAKE_OK, body: '{"ok":false}' }),
+  };
+  for (const [name, handler] of Object.entries(failures)) {
+    test(`Rückruf-Formular: ${name} → kein „Danke“, Ersatzweg sichtbar`, async ({ page }) => {
+      const errs = errorsOf(page);
+      await page.route('https://hook.eu1.make.com/**', handler);
+      await page.goto('./');
+      await page.click('#lt-rueckruf');
+      await fillRueckruf(page);
+      await page.click('#rr-submit');
+      const status = page.locator('#lp-rueckruf .form-status');
+      await expect(status).toContainText('nicht bei mir angekommen');
+      await expect(status).not.toContainText('Danke');
+      const wa = page.locator('#lp-rueckruf [data-fb="wa"]');
+      await expect(wa).toBeVisible();
+      const href = decodeURIComponent(await wa.getAttribute('href'));
+      expect(href).toContain('Name: Test');
+      expect(href).toContain('Telefon: 0170 0000000');
+      await expect(page.locator('#rr-name')).toHaveValue('Test');          // Eingaben bleiben erhalten
+      await expect(page.locator('#rr-submit')).toBeEnabled();              // erneuter Versuch möglich
+      expect(errs).toEqual([]);
+    });
+  }
+
+  test('Rückruf-Formular: Zeitüberschreitung → Ersatzweg', async ({ page }, info) => {
+    test.skip(info.project.name !== 'desktop-hell', 'dauert ~15 s, ein Projekt genügt');
+    test.setTimeout(45_000);
+    await page.route('https://hook.eu1.make.com/**', () => { /* antwortet nie */ });
+    await page.goto('./');
+    await page.click('#lt-rueckruf');
+    await fillRueckruf(page);
+    await page.click('#rr-submit');
+    await expect(page.locator('#lp-rueckruf .form-status')).toContainText('nicht bei mir angekommen', { timeout: 25_000 });
+    await expect(page.locator('#lp-rueckruf [data-fb="wa"]')).toBeVisible();
+  });
+
+  test('Rückruf-Fehlerzustand: axe ohne Verstöße', async ({ page }) => {
+    await page.route('https://hook.eu1.make.com/**', (r) => r.fulfill({ status: 500, body: 'error' }));
+    await page.goto('./');
+    await page.click('#lt-rueckruf');
+    await fillRueckruf(page);
+    await page.click('#rr-submit');
+    await expect(page.locator('#lp-rueckruf [data-fb="wa"]')).toBeVisible();
+    const r = await new AxeBuilder({ page }).include('#lp-rueckruf').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+    expect(r.violations.map((v) => v.id)).toEqual([]);
   });
 
   test('Ansichtswechsel Sparen ↔ Partner ohne Fehler', async ({ page }) => {

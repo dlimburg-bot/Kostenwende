@@ -254,9 +254,9 @@
       "goal": "G4",
       "evidence": {
         "type": "Annahme",
-        "detail": "Formular nutzt no-cors: Serverfehler sind im Browser unsichtbar; Gratis-Kontingent 1.000 Operationen/Monat"
+        "detail": "Bis LEAD-001 waren Serverfehler im Browser unsichtbar (no-cors). Make-Gratis: 1.000 Credits/Monat, 2 aktive Szenarien (beide belegt) laut jetadmin.io, Stand 26.09.2026 [Tarif von Dennis nicht bestätigt]. Lead ≈ 4 Credits."
       },
-      "action": "Make-Fehlerbenachrichtigung prüfen; monatlicher Blick auf Operationen; Lead-Ende-zu-Ende-Test nach jeder Formularänderung",
+      "action": "Fehlerzweig im bestehenden Lead-Szenario (Mail an Dennis); monatlicher Blick auf Credits; Ende-zu-Ende-Test nach jeder Formularänderung",
       "acceptance": [
         "Fehler-Mail aktiv",
         "Kontingent < 80 % oder Warnung"
@@ -285,7 +285,7 @@
       "goal": "G4",
       "evidence": {
         "type": "Annahme",
-        "detail": "Webhook öffentlich; nur Honeypot im Browser"
+        "detail": "Webhook öffentlich; nur Honeypot im Browser | Stand 2026-10-16 (Make-Bauplan gelesen): Server-Filter prüft Honeypot, Einwilligung=ja, Telefon vorhanden. Offen: Feldlängen, Anfrage-Häufigkeit."
       },
       "action": "Plausibilitätsfilter in Make (Telefonformat, Honeypot leer, Einwilligung)",
       "acceptance": [
@@ -671,6 +671,39 @@
       "conflicts_with": [],
       "resolution": null,
       "status": "umgesetzt (Strom) · offen (Gas)"
+    },
+    {
+      "id": "LEAD-001",
+      "title": "Rückruf-Formular meldete Erfolg auch bei Make-Fehler (no-cors)",
+      "areas": [
+        "ux",
+        "qa"
+      ],
+      "goal": "G4",
+      "evidence": {
+        "type": "gemessen",
+        "detail": "Playwright 2026-10-16: Webhook antwortet 500 → Seite zeigt 'Danke! Ich rufe Sie … zurück.' (Antwort im no-cors-Modus unlesbar). Make-Szenario sendet bei Erfolg bereits 200 + {\"ok\":true} + Access-Control-Allow-Origin."
+      },
+      "action": "fetch im CORS-Modus, Erfolg nur bei {ok:true}; Zeitlimit 15 s; bei Fehler Hinweis, Eingaben bleiben, WhatsApp-Ersatz mit Name/Telefon/Zeit + Telefonlink. Keine Make-Änderung.",
+      "acceptance": [
+        "500/Netzwerkfehler/Zeitüberschreitung/fehlende Bestätigung → kein 'Danke', Ersatzweg sichtbar (Tests)",
+        "Erfolgsfall unverändert",
+        "axe 0 Verstöße im Fehlerzustand",
+        "Ende-zu-Ende-Test mit echter Anfrage nach Live-Gang (Dennis)"
+      ],
+      "ice_r": {
+        "impact": 5,
+        "weight": 3,
+        "confidence": 0.9,
+        "effort": 1,
+        "risk": 1,
+        "score": 13.5
+      },
+      "depends_on": [],
+      "conflicts_with": [],
+      "resolution": null,
+      "status": "umgesetzt (Branch fix/formular-zustellung, nicht live)",
+      "blocker": "Freigabe Deployment; Ende-zu-Ende-Test"
     }
   ]
 }
