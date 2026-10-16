@@ -1,16 +1,152 @@
 {
   "_hinweis": "Jede Zahl auf der Website mit Quelle, Stand und Prüfstatus (Regel: CLAUDE.md §3.1, Skill content-trust). Nächste Pflichtprüfung: 2027-04.",
   "claims": [
-    { "id": "Z-01", "text": "22 % der Stromkunden in der Grundversorgung", "wert": "22 %", "quelle": "Bundesnetzagentur, Monitoringbericht 2025 (Daten 2024), Pressemitteilung 26.11.2025", "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html", "stand": "2025-11", "status": "verifiziert", "geprueft_am": "2026-10-16" },
-    { "id": "Z-02", "text": "1.315 € Mehrkosten pro Jahr, Einfamilienhaus Strom+Gas in der Grundversorgung", "wert": "1.315 € (622 € Strom, 693 € Gas; 4.000 kWh Strom, 20.000 kWh Gas)", "quelle": "Verivox, Pressemeldung 03.06.2026", "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/", "stand": "2026-06", "status": "verifiziert", "geprueft_am": "2026-10-16" },
-    { "id": "Z-03", "text": "5,4 Mrd. € zu viel gezahlt im 1. Halbjahr 2026", "wert": "5,4 Mrd. € (3,5 Strom, 1,9 Gas), hochgerechnet", "quelle": "Verivox, Pressemeldung 03.06.2026", "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/", "stand": "2026-06", "status": "verifiziert", "geprueft_am": "2026-10-16" },
-    { "id": "Z-04", "text": "Ø Strompreis Haushalte 37,0 ct/kWh", "wert": "37,0 ct/kWh (Jahresdurchschnitt 2026 bisher)", "quelle": "BDEW-Strompreisanalyse 08/2026", "url": "https://www.bdew.de/media/documents/BDEW_Strompreisanalyse_082026.pdf", "stand": "2026-08", "status": "verifiziert", "geprueft_am": "2026-10-16" },
-    { "id": "Z-05", "text": "Ø Gaspreis Haushalte 12,1 ct/kWh (Rechner)", "wert": "12,13 ct/kWh, Frühjahr 2025", "quelle": "Bundesnetzagentur, Monitoringbericht 2025", "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html", "stand": "2025-11", "status": "verifiziert", "geprueft_am": "2026-10-16", "notiz": "Älteste Zahl der Seite; bei neuem Monitoringbericht (Nov. 2026) aktualisieren" },
-    { "id": "Z-06", "text": "Tarifabstand Grundversorgung → günstigster Tarif: Strom 16 ct, Gas 4 ct; Laufzeittarif örtlich: Strom 8 ct, Gas 2 ct (Rechner)", "wert": "16 / 8 ct Strom, 4 / 2 ct Gas", "quelle": "Verivox, Pressemeldung 03.06.2026", "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/", "stand": "2026-06", "status": "verifiziert", "geprueft_am": "2026-10-16" },
-    { "id": "Z-07", "text": "CO₂-Preis BEHG 2021–2025: 25/30/30/45/55 €; 2026 Korridor 55–65 €", "wert": "s. Text", "quelle": "Brennstoffemissionshandelsgesetz (BEHG)", "url": "https://www.gesetze-im-internet.de/behg/", "stand": "2026-10", "status": "übernommen", "geprueft_am": "2026-10-16", "notiz": "Werte aus Gesetzestext bekannt; Primärquelle bei nächster Prüfung öffnen" },
-    { "id": "Z-08", "text": "CO₂-Preis 2027 Korridor 55–65 €", "wert": "55–65 €", "quelle": "Deutscher Bundestag, 3. BEHG-Änderungsgesetz, Beschluss 15.10.2026; Bundesrat ausstehend", "url": "https://www.bundestag.de/dokumente/textarchiv/2026/kw41-pa-umwelt-1217926", "stand": "2026-10", "status": "verifiziert", "geprueft_am": "2026-10-16", "notiz": "Nach Bundesrat/Inkrafttreten Formulierung „beschlossen“ → „gilt“ anpassen" },
-    { "id": "Z-09", "text": "Lieferantenwechsel technisch innerhalb eines Werktags seit Juni 2025", "wert": "24-Stunden-Lieferantenwechsel ab 06.06.2025", "quelle": "Bundesnetzagentur (GPKE-Festlegung)", "url": "https://www.bundesnetzagentur.de/", "stand": "2025-06", "status": "übernommen", "geprueft_am": "2026-10-16", "notiz": "Primärquelle bei nächster Prüfung verlinken" },
-    { "id": "Z-10", "text": "Provision je Zähler: Berater 65 € privat / 185 € Gewerbe; Organisationsleiter 110 € / 300 €", "wert": "s. Text", "quelle": "TELESON-Vergütungsunterlagen 2026 (intern, von Dennis bereitgestellt)", "url": null, "stand": "2026", "status": "übernommen", "geprueft_am": "2026-10-16", "notiz": "Nicht öffentlich prüfbar; Dennis bestätigt Aktualität halbjährlich. Auf der Seite als Beispiel, keine Zusage gekennzeichnet" },
-    { "id": "Z-11", "text": "7,1 Mio. Stromkunden wechselten 2024 den Lieferanten", "wert": "7,1 Mio.", "quelle": "Bundesnetzagentur, Monitoringbericht 2025", "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html", "stand": "2025-11", "status": "verifiziert", "geprueft_am": "2026-10-16", "notiz": "Derzeit nicht auf der Seite (am 16.10. aus Gründen der Ruhe entfernt). Darf bei Bedarf wieder verwendet werden" }
+    {
+      "id": "Z-01",
+      "text": "22 % der Stromkunden in der Grundversorgung",
+      "wert": "22 %",
+      "quelle": "Bundesnetzagentur, Monitoringbericht 2025 (Daten 2024), Pressemitteilung 26.11.2025",
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html",
+      "stand": "2025-11",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Z-02",
+      "text": "1.315 € Mehrkosten pro Jahr, Einfamilienhaus Strom+Gas in der Grundversorgung",
+      "wert": "1.315 € (622 € Strom, 693 € Gas; 4.000 kWh Strom, 20.000 kWh Gas)",
+      "quelle": "Verivox, Pressemeldung 03.06.2026",
+      "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/",
+      "stand": "2026-06",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Z-03",
+      "text": "5,4 Mrd. € zu viel gezahlt im 1. Halbjahr 2026",
+      "wert": "5,4 Mrd. € (3,5 Strom, 1,9 Gas), hochgerechnet",
+      "quelle": "Verivox, Pressemeldung 03.06.2026",
+      "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/",
+      "stand": "2026-06",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Z-04",
+      "text": "Ø Strompreis Haushalte 37,0 ct/kWh",
+      "wert": "37,0 ct/kWh (Jahresdurchschnitt 2026 bisher)",
+      "quelle": "BDEW-Strompreisanalyse 08/2026",
+      "url": "https://www.bdew.de/media/documents/BDEW_Strompreisanalyse_082026.pdf",
+      "stand": "2026-08",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Z-05",
+      "text": "Ø Gaspreis Haushalte 12,1 ct/kWh (Rechner)",
+      "wert": "12,13 ct/kWh, Frühjahr 2025",
+      "quelle": "Bundesnetzagentur, Monitoringbericht 2025",
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html",
+      "stand": "2025-11",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Älteste Zahl der Seite; bei neuem Monitoringbericht (Nov. 2026) aktualisieren"
+    },
+    {
+      "id": "Z-06",
+      "text": "Tarifabstand Grundversorgung → günstigster Tarif: Strom 16 ct, Gas 4 ct; Laufzeittarif örtlich: Strom 8 ct, Gas 2 ct (Rechner)",
+      "wert": "16 / 8 ct Strom, 4 / 2 ct Gas",
+      "quelle": "Verivox, Pressemeldung 03.06.2026",
+      "url": "https://www.verivox.de/strom-gas/nachrichten/54-milliarden-euro-verschenkt-deutsche-haushalte-zahlen-zu-viel-fuer-strom-und-gas-1121588/",
+      "stand": "2026-06",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Z-07",
+      "text": "CO₂-Preis BEHG 2021–2025: 25/30/30/45/55 €; 2026 Korridor 55–65 €",
+      "wert": "s. Text",
+      "quelle": "Brennstoffemissionshandelsgesetz (BEHG)",
+      "url": "https://www.gesetze-im-internet.de/behg/",
+      "stand": "2026-10",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Werte aus Gesetzestext bekannt; Primärquelle bei nächster Prüfung öffnen"
+    },
+    {
+      "id": "Z-08",
+      "text": "CO₂-Preis 2027 Korridor 55–65 €",
+      "wert": "55–65 €",
+      "quelle": "Deutscher Bundestag, 3. BEHG-Änderungsgesetz, Beschluss 15.10.2026; Bundesrat ausstehend",
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2026/kw41-pa-umwelt-1217926",
+      "stand": "2026-10",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Nach Bundesrat/Inkrafttreten Formulierung „beschlossen“ → „gilt“ anpassen"
+    },
+    {
+      "id": "Z-09",
+      "text": "Lieferantenwechsel technisch innerhalb eines Werktags seit Juni 2025",
+      "wert": "24-Stunden-Lieferantenwechsel ab 06.06.2025",
+      "quelle": "Bundesnetzagentur (GPKE-Festlegung)",
+      "url": "https://www.bundesnetzagentur.de/",
+      "stand": "2025-06",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Primärquelle bei nächster Prüfung verlinken"
+    },
+    {
+      "id": "Z-10",
+      "text": "Provision je Zähler: Berater 65 € privat / 185 € Gewerbe; Organisationsleiter 110 € / 300 €",
+      "wert": "s. Text",
+      "quelle": "TELESON-Vergütungsunterlagen 2026 (intern, von Dennis bereitgestellt)",
+      "url": null,
+      "stand": "2026",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Nicht öffentlich prüfbar; Dennis bestätigt Aktualität halbjährlich. Auf der Seite als Beispiel, keine Zusage gekennzeichnet"
+    },
+    {
+      "id": "Z-11",
+      "text": "7,1 Mio. Stromkunden wechselten 2024 den Lieferanten",
+      "wert": "7,1 Mio.",
+      "quelle": "Bundesnetzagentur, Monitoringbericht 2025",
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251126_Monitoringbericht.html",
+      "stand": "2025-11",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Derzeit nicht auf der Seite (am 16.10. aus Gründen der Ruhe entfernt). Darf bei Bedarf wieder verwendet werden"
+    },
+    {
+      "id": "Q-01",
+      "text": "Geprüfter Wirtschaftsfachwirt (IHK), 2018, DQR-Niveau 6",
+      "wert": "Prüfungszeugnis 17.07.2018",
+      "quelle": "IHK Schwarzwald-Baar-Heuberg, Prüfungszeugnis (Urkunde von Dennis vorgelegt)",
+      "url": null,
+      "stand": "2018-07",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Scan auf der Website ohne Geburtsdatum (docs/nachweise/). 'Niveau Bachelor (DQR 6)' laut Zeugnistext"
+    },
+    {
+      "id": "Q-02",
+      "text": "Ausbildereignung (AEVO), IHK, 2018",
+      "wert": "Zeugnis 14.12.2018",
+      "quelle": "IHK Schwarzwald-Baar-Heuberg (Urkunde vorgelegt)",
+      "url": null,
+      "stand": "2018-12",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "Q-03",
+      "text": "Personalentwickler:in NEW WORK, biema, 2025, 408 UE",
+      "wert": "Zertifikat 27.05.2025",
+      "quelle": "biema (Urkunde vorgelegt)",
+      "url": null,
+      "stand": "2025-05",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    }
   ]
 }

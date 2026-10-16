@@ -80,6 +80,35 @@ test.describe('Barrierefreiheit', () => {
   });
 });
 
+test.describe('Nachweise (Urkunden)', () => {
+  for (const [name, hash, sel] of [['Sparen', '', '#nachweise'], ['Partner', '#partner', '#nachweise-partner']]) {
+    test(`${name}: 3 Vorschaubilder laden, Großansicht öffnet und schließt`, async ({ page }) => {
+      const errs = errorsOf(page);
+      await page.goto('./' + hash);
+      const box = page.locator(sel);
+      await box.scrollIntoViewIfNeeded();
+      const imgs = box.locator('.nachweis img');
+      await expect(imgs).toHaveCount(3);
+      for (let i = 0; i < 3; i++) await expect.poll(() => imgs.nth(i).evaluate((im) => im.complete && im.naturalWidth > 0)).toBe(true);
+      const first = box.locator('.nachweis').first();
+      await first.click();
+      const dlg = page.locator('#nachweis-dlg');
+      await expect(dlg).toBeVisible();
+      await expect.poll(() => page.locator('#nachweis-img').evaluate((im) => im.complete && im.naturalWidth >= 900)).toBe(true);
+      await expect(page.locator('#nachweis-cap')).not.toBeEmpty();
+      await page.keyboard.press('Escape');
+      await expect(dlg).toBeHidden();
+      await expect(first).toBeFocused();
+      expect(errs).toEqual([]);
+    });
+  }
+  test('Startbereich nennt die Qualifikation, nicht „Energieberater“', async ({ page }) => {
+    await page.goto('./');
+    await expect(page.locator('.advisor')).toContainText('Wirtschaftsfachwirt (IHK)');
+    expect(await page.locator('body').innerText()).not.toMatch(/Energieberat(er|ung)/);
+  });
+});
+
 test.describe('Ruhe statt Überladung (Regression)', () => {
   test('keine Dauer-Animationen, kein Live-Zähler, kein Laufband', async ({ page }) => {
     await page.goto('./');
