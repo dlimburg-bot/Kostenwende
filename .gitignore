@@ -7,3 +7,4 @@ node_modules/
 .qa/check.json
 .env
 .env.*
+.qa/design-lint.json
