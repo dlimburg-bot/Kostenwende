@@ -604,8 +604,9 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
   .brand span{display:block}
   .tab-x{display:inline}
   .grid.g2,.aud{grid-template-columns:1fr 1fr}
-  .facts{grid-template-columns:repeat(4,1fr)}
+  .facts{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:repeat(3,1fr)}
+  .steps li{padding:64px 20px 20px}          /* Tablet: Nummer über dem Titel statt daneben → breitere Textspalte */
   .steps.four{grid-template-columns:1fr 1fr}
   .rules{grid-template-columns:1fr 1fr}
   .kpis{grid-template-columns:repeat(4,1fr)}
@@ -622,6 +623,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
   .grid.g3,.trust{grid-template-columns:repeat(3,1fr)}
   .grid.g4{grid-template-columns:repeat(4,1fr)}
   .steps.four{grid-template-columns:repeat(4,1fr)}
+  .facts{grid-template-columns:repeat(4,1fr)}  /* 4 Kennzahlen nebeneinander erst ab 960 px (Tablet: 2 × 2) */
   .rules{grid-template-columns:repeat(3,1fr)}
   .person{grid-template-columns:360px 1fr;gap:48px}
   .switch-band .wrap{grid-template-columns:1fr auto}
@@ -880,7 +882,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
       </div>
       <div class="facts" role="list">
         <div class="fact rv" role="listitem"><b data-count="22" data-suffix=" %">22 %</b><span>der Stromkunden sind noch in der Grundversorgung</span><cite>Bundesnetzagentur, Monitoring 2025</cite></div>
-        <div class="fact rv" role="listitem"><b data-count="1315" data-suffix=" €">1.315 €</b><span>Mehrkosten pro Jahr in der Grundversorgung, Beispiel Einfamilienhaus (4.000 kWh Strom, 20.000 kWh Gas)</span><cite>Verivox, 06/2026</cite></div>
+        <div class="fact rv" role="listitem"><b data-count="1315" data-suffix=" €">1.315 €</b><span>Mehrkosten pro Jahr in der Grundversorgung, Beispiel Einfamilienhaus</span><cite>Verivox, 06/2026 · 4.000 kWh Strom, 20.000 kWh Gas</cite></div>
         <div class="fact rv" role="listitem"><b data-count="5.4" data-dec="1" data-suffix=" Mrd. €">5,4 Mrd. €</b><span>zu viel gezahlt, allein im 1. Halbjahr 2026</span><cite>Verivox, hochgerechnet</cite></div>
         <div class="fact rv" role="listitem"><b data-count="37.0" data-dec="1" data-suffix=" ct">37,0 ct</b><span>Ø Strompreis je kWh für Haushalte</span><cite>BDEW, 08/2026</cite></div>
       </div>
