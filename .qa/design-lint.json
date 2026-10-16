@@ -1,0 +1,226 @@
+{
+  "time": "2026-10-16T18:39:32.405Z",
+  "rules": {
+    "maxRadii": 3,
+    "maxPill": 0,
+    "fonts": [
+      "Archivo",
+      "Archivo Display"
+    ],
+    "maxShadows": 4,
+    "maxGradients": 0,
+    "maxEyebrowCaps": 0,
+    "maxItalicHead": 0,
+    "maxInfinite": 0,
+    "maxCardRuns": 2,
+    "maxCheckChips": 0,
+    "minH1H2": 1.2,
+    "heroCentered": false
+  },
+  "report": [
+    {
+      "id": "1440px light #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.31,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "1440px light #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.31,
+        "cardRuns": 2
+      }
+    },
+    {
+      "id": "1440px dark #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.31,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "1440px dark #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.31,
+        "cardRuns": 2
+      }
+    },
+    {
+      "id": "768px light #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.58,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "768px light #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.58,
+        "cardRuns": 2
+      }
+    },
+    {
+      "id": "768px dark #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.58,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "768px dark #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.58,
+        "cardRuns": 2
+      }
+    },
+    {
+      "id": "390px light #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.32,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "390px light #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.32,
+        "cardRuns": 2
+      }
+    },
+    {
+      "id": "390px dark #sparen",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 3,
+        "ratio": 1.32,
+        "cardRuns": 0
+      }
+    },
+    {
+      "id": "390px dark #partner",
+      "violations": [],
+      "measured": {
+        "radii": [
+          2,
+          4
+        ],
+        "fonts": [
+          "Archivo",
+          "Archivo Display"
+        ],
+        "shadows": 2,
+        "ratio": 1.32,
+        "cardRuns": 2
+      }
+    }
+  ]
+}
