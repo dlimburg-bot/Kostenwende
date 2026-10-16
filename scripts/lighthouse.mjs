@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Lighthouse mobil + desktop, je 3 Läufe, Median gegen die Grenzwerte aus CLAUDE.md §6.
 // Erwartet einen laufenden Server (npm run serve) oder BASE_URL. Schreibt .qa/lighthouse.json.
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { chromium } from '@playwright/test';
 
@@ -9,6 +9,16 @@ import { chromium } from '@playwright/test';
 process.env.CHROME_PATH ||= chromium.executablePath();
 
 const URL = process.env.BASE_URL || 'http://localhost:8765/';
+
+// Ohne BASE_URL: eigenen lokalen Server für docs/ starten (und am Ende beenden), falls keiner läuft
+let server = null;
+if (!process.env.BASE_URL) {
+  const up = await fetch(URL).then((r) => r.ok).catch(() => false);
+  if (!up) {
+    server = spawn('python3', ['-m', 'http.server', '8765', '--directory', 'docs'], { stdio: 'ignore' });
+    for (let i = 0; i < 50 && !(await fetch(URL).then((r) => r.ok).catch(() => false)); i++) await new Promise((r) => setTimeout(r, 100));
+  }
+}
 const LIMITS = { performance: 95, accessibility: 100, 'best-practices': 100, seo: 100, cls: 0.02, lcp: 2000 };
 const median = (a) => a.slice().sort((x, y) => x - y)[Math.floor(a.length / 2)];
 mkdirSync('.qa/runs', { recursive: true });
@@ -33,4 +43,5 @@ for (const preset of ['mobile', 'desktop']) {
   console.log(`${preset}: Perf ${m.performance} · A11y ${m.accessibility} · BP ${m['best-practices']} · SEO ${m.seo} · LCP ${Math.round(m.lcp)} ms · CLS ${m.cls.toFixed(3)} ${fails.length ? '✗ ' + fails.join('; ') : '✓'}`);
 }
 writeFileSync('.qa/lighthouse.json', JSON.stringify({ time: new Date().toISOString(), url: URL, ...result }, null, 2));
+server?.kill();
 process.exit(ok ? 0 : 1);
