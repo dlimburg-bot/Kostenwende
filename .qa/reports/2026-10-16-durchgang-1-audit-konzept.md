@@ -13,7 +13,7 @@ Die größten Schwächen liegen **nicht im Code**, sondern in zwei Feldern:
 1. **Fachliche Klarheit des Angebots:** Der Rechner misst die Ersparnis am günstigsten Tarif des Gesamtmarkts,
    vermittelt werden aber nur Tarife aus dem TELESON-Portfolio. Mehrere TELESON-bezogene Aussagen sind nicht belegt.
 2. **Gestalterische Eigenständigkeit:** Solide, aber austauschbar: viele gleichförmige Karten, generische Icons,
-   12 verschiedene Eckenradien, Systemschrift ohne Charakter.
+   16 verschiedene Eckenradien, Systemschrift ohne Charakter.
 
 Durchgang 1 hat nur **Fehler behoben** (Darstellung, Barrierefreiheit, Layout-Sprung) und auf Ihren Wunsch die
 **Qualifikationen** eingebunden. Inhalte und Design wurden sonst nicht umgebaut.
@@ -52,7 +52,7 @@ Lead-Strecke Website → Make aus dem echten Browser, Druckansicht.
 ### Wichtig: Qualität und Wirkung
 | # | Befund | Evidenz | Lösung |
 |---|---|---|---|
-| W1 | **Gestaltung austauschbar:** 18 Karten, 13 generische Icons, 12 Eckenradien, 6 Schattenvarianten | CSS-Zählung [gemessen] | Gestaltungskonzept (Abschnitt 4) |
+| W1 | **Gestaltung austauschbar:** 18 Karten, 13 generische Icons, 16 Eckenradien, 11 Schattenangaben, 15 Schriftgrößen-Angaben | CSS-Zählung eindeutiger Werte [gemessen] | Gestaltungskonzept (Abschnitt 4) |
 | W2 | Desktop-Startbereich: linke Spalte endet früh, rechts der lange Rechner → Ungleichgewicht | Sichtprüfung [gemessen] | Neue Hero-Komposition (Konzept) |
 | W3 | Bilder als Base64 eingebettet: HTML 199 KB (gzip 88 KB) | Messung [gemessen] | Bilder als Dateien → HTML ≈ 100 KB [Annahme], LCP-Gewinn |
 | W4 | „In 3 Jahren bis zu 1.680 €“ und Ring „34 % sparbar“ zeigen die **Obergrenze** ohne Einordnung | Rechner [gemessen] | „bis zu“ am Ring, „bei gleichbleibendem Preisabstand“ |
@@ -142,9 +142,9 @@ Desktop zweispaltig nur dort, wo es Inhalte ordnet.
 ### Überprüfbare Abnahmekriterien für Durchgang 2
 | Kriterium | Grenzwert | Heute |
 |---|---|---|
-| Schriftgrößen | ≤ 8 | 10 |
-| Eckenradien | ≤ 3 | 12 |
-| Schattenvarianten | ≤ 1 | 6 |
+| Schriftgrößen (eindeutige Angaben inkl. Diagramm) | ≤ 8 | 15 |
+| Eckenradien (eindeutige Angaben) | ≤ 3 | 16 |
+| Schattenangaben | ≤ 2 (Fokus/Erhebung) | 11 |
 | Karten-Komponenten je Ansicht | ≤ 6 | 18 (gesamt) |
 | Dekorative Icons | 0 | 13 |
 | axe-Verstöße / Lighthouse A11y | 0 / 100 | 0 / 100 |
