@@ -220,9 +220,10 @@ section{padding-block:56px}
 /* =====================================================================
    4 · HERO (Attention): Hook + Subline + CTA above the fold, Rechner rechts
    ===================================================================== */
-.hero{padding-block:32px 48px;position:relative;overflow:hidden;overflow:clip}
-.hero::before{content:"";position:absolute;inset:-30% -20% auto auto;width:70vmax;height:70vmax;border-radius:50%;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none;z-index:0}
+/* Lichtflächen als Hintergrund statt Pseudo-Elemente: Hintergründe verursachen keine Layout-Verschiebung (CLS) */
+.hero{padding-block:32px 48px;position:relative;overflow:hidden;overflow:clip;
+  background:radial-gradient(circle 35vmax at 92% 8%,color-mix(in srgb,var(--accent) 22%,transparent),transparent),
+             radial-gradient(circle 30vmax at 4% 100%,color-mix(in srgb,var(--brand) 8%,transparent),transparent)}
 .hero .wrap{position:relative;z-index:1;display:grid;gap:32px;grid-template-columns:1fr}
 .hero-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
 /* Hervorhebung als Unterstreichung: Text liegt nie auf Farbfläche → in Hell UND Dunkel voll lesbar */
@@ -439,12 +440,7 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
 [data-theme-toggle][aria-pressed="true"] .i-moon,[data-theme-toggle][aria-pressed="false"] .i-sun{display:none}
 @media (min-width:420px){.theme-btn{display:grid}}
 .link-btn{background:none;border:0;padding:0;font:inherit;color:var(--deep-fg);text-decoration:underline;cursor:pointer}
-/* c · Hero-Aurora: zwei weiche Lichtflächen driften langsam (transform) */
-.hero::after{content:"";position:absolute;left:-30%;bottom:-45%;width:60vmax;height:60vmax;border-radius:50%;pointer-events:none;z-index:0;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--brand) 8%,transparent),transparent)}
-@keyframes drift1{to{transform:translate(-8vmax,6vmax) scale(1.08)}}
-@keyframes drift2{to{transform:translate(10vmax,-6vmax) scale(.92)}}
-.hero.paused::before,.hero.paused::after{animation-play-state:paused}
+/* c · Hero-Licht: statisch (siehe .hero-Hintergrund) – ruhiger und ohne Layout-Verschiebung */
 /* d · H1-Unterstreichung „fährt ein“ */
 @keyframes ul-in{from{text-decoration-color:transparent;text-underline-offset:.45em}to{text-decoration-color:var(--accent);text-underline-offset:.14em}}
 .js .hero h1 em,.js .hero .h1like em{animation:ul-in .9s .35s var(--ease) both}
@@ -495,8 +491,6 @@ input[type=range]{width:100%;height:32px;accent-color:var(--brand);cursor:pointe
        Touch-Geräte bekommen deckende Leisten und statisches Licht → kein Ruckeln beim Scrollen. */
 @media (hover:hover) and (pointer:fine) and (min-width:960px){
   .site-head{background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px)}
-  .hero::before{animation:drift1 18s ease-in-out infinite alternate;will-change:transform}
-  .hero::after{animation:drift2 24s ease-in-out infinite alternate;will-change:transform}
 }
 /* l · Ansichtswechsel per View Transitions API */
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
@@ -763,7 +757,8 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
         <!-- Frage 2: Verbrauch per Klick (typische Werte, senkt die Hürde) oder exakt -->
         <div class="q" data-q="2">
           <p class="q-t"><span class="q-n" aria-hidden="true">2</span><span id="q2-label">Wie viele Personen leben im Haushalt?</span></p>
-          <div class="chips" id="presets" role="group" aria-labelledby="q2-label"></div>
+          <!-- Standard-Auswahl (Haushalt/Strom) bereits im HTML: verhindert Layout-Verschiebung, bevor das Skript läuft -->
+          <div class="chips" id="presets" role="group" aria-labelledby="q2-label" data-n="4"><button type="button" data-kwh="1500" aria-pressed="false">1 Person<small>1.500 kWh</small></button><button type="button" data-kwh="2500" aria-pressed="false">2 Personen<small>2.500 kWh</small></button><button type="button" data-kwh="3500" aria-pressed="true">3 Personen<small>3.500 kWh</small></button><button type="button" data-kwh="4250" aria-pressed="false">4+ Personen<small>4.250 kWh</small></button></div>
           <div class="field">
             <label for="verbrauch">Oder genau: Jahresverbrauch in kWh</label>
             <input id="verbrauch" type="text" inputmode="decimal" autocomplete="off" value="3500" aria-describedby="hint-verbrauch">
@@ -1704,10 +1699,6 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
     });
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  if (hasIO) {                                               // Endlos-Animationen nur, wenn sichtbar (Akku/CPU)
-    const pio = new IntersectionObserver((entries) => entries.forEach((en) => en.target.classList.toggle('paused', !en.isIntersecting)));
-    document.querySelectorAll('.hero').forEach((el) => pio.observe(el));
-  }
 
   /* ---------- 10 · Spotlight auf Karten (nur Maus, rAF-gedrosselt) ---------- */
   document.querySelectorAll('.card, .fact, .steps li, .kpi').forEach((el) => el.classList.add('spot'));
