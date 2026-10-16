@@ -14,11 +14,12 @@ if (!(await fetch(URL).then((r) => r.ok).catch(() => false))) {
   for (let i = 0; i < 50 && !(await fetch(URL).then((r) => r.ok).catch(() => false)); i++) await new Promise((r) => setTimeout(r, 100));
 }
 
-// Grenzwerte = Markensystem v3 (references/brand-system.md). Änderung nur zusammen mit dem Markensystem.
+// Grenzwerte = Markensystem v4 „Nachtstrom“ (references/brand-system.md, Master-Prompt Cinematic 5.0).
+// Änderung nur zusammen mit dem Markensystem und Begründung im Bericht.
 const RULES = {
   maxRadii: 3,            // AG-01 Radiusstufen (ohne Kreise ≥ 50 % und 0)
-  maxPill: 0,             // AG-02 Pillen-Buttons/-Chips (Radius ≥ 20 px bei Höhe < 80 px)
-  fonts: ['Archivo', 'Archivo Display'], // AG-03 nur Markenschriften
+  maxPill: 0,             // AG-02 Pillen außerhalb von Handlungen (a/button) – v4: Pillen nur für Handlungen
+  fonts: ['Archivo'],     // AG-03 nur Markenschrift
   maxShadows: 4,          // AG-04 verschiedene Schattenwerte
   maxGradients: 0,        // AG-05 Verlaufsflächen (Diagramme/Bilder ausgenommen)
   maxEyebrowCaps: 0,      // AG-06 VERSALIEN-Labels mit Sperrung
@@ -27,7 +28,7 @@ const RULES = {
   maxCardRuns: 2,         // AG-09 Abschnitte mit ≥ 3 gleich gebauten Karten in Folge
   maxCheckChips: 0,       // AG-10 Häkchen-Vorteilsleisten
   minH1H2: 1.2,           // AG-11 typografische Dramaturgie: h1 ≥ 1,2 × h2
-  heroCentered: false,    // AG-12 zentrierte Standard-Hero
+  heroCentered: true,     // AG-12 v4: zentrierter Szenensatz über Vollbild-Szene ist Konzept (Referenz Dennis 16.10.2026)
 };
 
 const measure = () => {
@@ -37,9 +38,11 @@ const measure = () => {
   for (const e of all) {
     const c = getComputedStyle(e), r = e.getBoundingClientRect();
     const rad = parseFloat(c.borderTopLeftRadius);
-    const circle = c.borderTopLeftRadius.includes('%') || rad >= Math.min(r.width, r.height) / 2 - 1;
-    if (rad > 0 && !circle) radii.add(Math.round(rad));
-    if (rad >= 20 && r.height < 80 && !circle && e.matches('a,button,li,span,label')) pills.push(e.className || e.tagName);
+    const full = c.borderTopLeftRadius.includes('%') || rad >= Math.min(r.width, r.height) / 2 - 1;
+    const circle = full && Math.abs(r.width - r.height) <= 2;
+    const pill = full && !circle && r.height < 80 && r.height > 12; // Balken/Indikatoren ≤ 12 px sind keine Pillen-Komponenten
+    if (rad > 0 && !full) radii.add(Math.round(rad));
+    if (pill && !e.matches('a,button,a *,button *,.skip')) pills.push(e.className || e.tagName);
     if (c.boxShadow !== 'none' && !e.matches(':focus,:focus-visible')) shadows.add(c.boxShadow);
     if (e.childNodes.length && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) fonts.add(c.fontFamily.split(',')[0].replace(/"/g, '').trim());
     if (/gradient\(/.test(c.backgroundImage) && !e.closest('svg,.chart,.panel::before,.progress')) grads.push(e.className || e.tagName);

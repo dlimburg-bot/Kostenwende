@@ -1,46 +1,35 @@
-# Markensystem v3 · „Wendepunkt“ (gültig ab 2026-10-16)
+# Markensystem v4 · „Nachtstrom“ (gültig ab 2026-10-16, ersetzt v3 „Wendepunkt“)
+
+Grundlage: Master-Prompt Cinematic 5.0 (`master-prompt-cinematic.md`), Stilreferenz von Dennis (Kino-Landingpage „Kettle & Deck“).
+Wiederherstellung v3: Git-Tag `vor-durchgang-4`.
 
 ## Leitidee
-Kostenwende ist der Punkt, an dem Ihre Energiekosten drehen. Signatur: **die Wende-Kurve** – ein Preisverlauf, der steigt,
-kippt und fällt. Sie erscheint als Bildmarke (Logo, Favicon, App-Icons) und als Linie am Fuß der Hero-Flächen. Sonst nirgends.
+Ein Kino-Vorspann über den Moment, in dem die Energiekosten kippen. Die Szene zeigt die Wende-Kurve als Glühfaden im Dunkeln:
+Preis steigt, kippt, fällt – am Wendepunkt am hellsten. Darunter steht ein ehrliches Werkzeug, das rechnet.
 
-## Persönlichkeit
-Klar, regional, nachrechnend. Ein Mensch (Dennis) statt Portal. Seriös wie ein Versorger, direkt wie ein Handwerker.
+## Bildwelt
+- `docs/szene/*.webp`: gerenderte Lichtgrafiken aus `scripts/render-szenen.py` (numpy). Keine Fotos, keine KI-Bilder, keine Stockbilder.
+- `docs/dennis-limburg-warm.webp`: echtes Porträt, warm gegradet (Duoton 62 % + Original 38 %).
+- [offen] Echte Fotos von Dennis (Abendlicht, Abrechnung, Region) würden die Szene weiter tragen.
 
-## Farbe (Tokens in `docs/index.html :root`)
-| Rolle | Hell | Dunkel | Regel |
+## Farbe
+| Rolle | Tageslicht | Nacht | Regel |
 |---|---|---|---|
-| Nachtblau `--deep` / `--brand` | #14263F / #15294A | #12223A / Gelb | abgeleitet aus dem Porträt-Hintergrund; Hero, dunkle Abschnitte, Primärbuttons auf Weiß |
-| Signalgelb `--accent` | #FFC629 | #FFC629 | **nur** Handlung (Buttons auf Dunkel), Ergebnis (Ersparnis), Bildmarke, Brückenband |
-| Fläche `--bg` / `--surface-2` | #FFFFFF / #EEF2F6 | #0A1220 / #15223A | Weiß und Kühlgrau wechseln sich mit Nachtblau ab |
-| Text `--fg` / `--muted` | #0F1B2D / #4A5668 | #EAF0F7 / #A3B0C2 | Kontrast ≥ 7 : 1 bzw. ≥ 4,5 : 1 |
-| Kosten `--cost` | #B7410E | #FF8A4C | aktuelle/zu hohe Kosten |
-| Panel-Rücksetzer `--p-*` | – | – | Rechner/Panels auf dunklen Flächen setzen Text- und Markenfarben zurück |
+| Bühne `--deep` | #0C0A08 | #070605 | Hero, Kapitel, Brücke, Fuß – immer Nacht |
+| Text auf Bühne `--deep-fg` / `--deep-muted` | #EFE8DC / #A9A091 | gleich | Kontrast ≥ 7 : 1 / ≥ 4,5 : 1 |
+| Glut `--accent` | #F4B740 | #F4B740 | nur Ergebnis (Ersparnis), Marke, Kapitel-Punkt, Ergebnis-CTA |
+| Fläche `--bg` / `--surface` | #F4EFE7 / #FBF8F2 | #0C0A08 / #15120E | Arbeitsbereiche folgen dem Modus |
+| Handlung `--brand` | Tinte #17130E | Creme #EFE8DC | Pille in Gegenfarbe zur Fläche |
 
 ## Typografie
-- **Archivo Display** (Archivo, wdth 112, wght 800, statisch instanziert, 15 KB): h1, h2, große Zahlen, Bildmarke. Laufweite −0,03 em.
-- **Archivo** (wdth 100, wght 400–700, 32 KB): alles andere. `font-display: optional` + Preload → CLS 0.
-- Skala: h1 clamp(2,5–4,25 rem) · h2 clamp(1,9–3,25 rem) · h3 1,19 rem · Lead 1,19 rem · Text 1,06 rem · Klein 0,875 rem.
-- Keine Kursive, keine Versalien-Labels, Labels sind normale Sätze in `--muted`.
+Archivo (OFL, 300–700, 32 KB, `font-display: optional`). Szenensätze 300, Laufweite −0,045 em; Zahlen 300; Labels 500; keine Versalien, keine Kursive.
 
-## Form & Raster
-- Ein Radius: 4 px (`--radius`), 2 px für Innenelemente (`--radius-xs`). Kreise nur für Fotos.
-- Schatten: nur das schwebende Rechner-Panel. Sonst Linien: 1 px Haarlinie, 4 px Oberkante (Ablauf), 2 px Rahmen (Kontakt).
-- Container 1160 px, Abschnittsabstand 44 / 64 / 96 px (mobil/Tablet/Desktop).
-- Abschnittsfolge Sparen: Nachtblau (Hero) → Nachtblau (Fakten) → Weiß (Ablauf) → Kühlgrau (Vertrauen) → Weiß (Person) → Kühlgrau (FAQ) → **Gelb** (Brücke) → Weiß (Kontakt) → Nachtblau (Fuß).
+## Form
+Radien 16 (Panels/Karten) · 10 (Felder/Chips) · 4 (Kleinteile). **Pillen nur für Handlungen** (Buttons, Umschalter). Haarlinien statt Kästen. Ein Schatten: Rechner-Panel.
 
-## Komponentenregeln
-- Buttons: kantig 4 px, 52 px hoch; Primär auf Weiß = Nachtblau, auf Dunkel = Gelb; Sekundär = 2 px Rahmen.
-- Reiter: Unterstreichung 3 px statt Pille.
-- Ablauf: große Display-Ziffern über 4-px-Linie, keine Kreise.
-- FAQ: Plus/Minus, Linienliste, Desktop 1/3 Überschrift + 2/3 Fragen.
-- Listen: Strich statt Häkchen.
+## Komposition
+Szene 100 svh mit zentriertem Satz, Nutzenzeile, Pille, Textlink, Kapitelanzeige. Danach linksbündige Arbeitsbereiche.
+Kapitel: 1 · Der Preis (Szene + Rechner) → 2 · Die Kosten (Nahaufnahme Wendepunkt + Zahlen) → 3 · Die Wende (Ablauf).
 
 ## Bewegung
-- Nur transform/opacity; 0,15 / 0,25 / 0,6 s; Easing `cubic-bezier(.2,.7,.2,1)`.
-- Erlaubt: gestaffelter Hero-Einstieg, Reveal beim Scrollen, Balken/Zahlen im Rechner, Ansichtswechsel.
-- Verboten: Endlos-Animationen, Glanz-Sweeps, Hover-Hüpfen, Intro-Sequenzen. `prefers-reduced-motion` schaltet alles ab.
-
-## Bildsprache
-Echtes Porträt von Dennis, echte Urkunden (Geburtsdatum geschwärzt). Keine Stockfotos, keine KI-Bilder.
-[offen] Ein Foto von Dennis im Kundengespräch/in der Region würde die Hero stärken – nur mit echtem Foto.
+Nur transform (Szene skaliert 1,05 → 1 in 1,4 s; Satz gestaffelt 14 px in 0,8 s). Kein Opacity-Fade im Hero (LCP, Kontrast). `prefers-reduced-motion` = statisch.

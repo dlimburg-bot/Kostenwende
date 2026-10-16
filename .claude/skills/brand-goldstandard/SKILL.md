@@ -73,6 +73,8 @@ SEO-Auswirkungen → `seo-local` · Phase 12 → `qa-release`. Unabhängige Prü
 ## Referenzen
 
 - `references/anti-generic.md` – die 12 messbaren Anti-Muster mit Begründung und erlaubten Ausnahmen
-- `references/brand-system.md` – gültiges Markensystem (Tokens, Typo, Raster, Motion, Komponentenregeln)
+- `references/brand-system.md` – gültiges Markensystem v4 „Nachtstrom“ (Tokens, Typo, Raster, Motion, Komponentenregeln)
+- `references/master-prompt-cinematic.md` – Master-Prompt Cinematic 5.0 (Stilreferenz von Dennis, Übertragung, Tore)
+- `scripts/render-szenen.py` – erzeugt die Szenen-Grafiken reproduzierbar (`python3 scripts/render-szenen.py docs/szene`)
 - `references/rubric.md` – Bewertungsraster 1–5 je Dimension mit konkreten Ankern
 - `references/report-template.md` – Abschlussbericht für Dennis

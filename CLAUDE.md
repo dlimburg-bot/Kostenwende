@@ -89,7 +89,7 @@ npm run serve      # lokaler Server auf :8765 (docs/, gzip wie GitHub Pages)
 
 | Komponente | Zweck |
 |---|---|
-| Skill `brand-goldstandard` | **Master-Skill** für Marken-/Design-Durchgänge (12 Phasen, Tore, Design-Lint, Markensystem v3) |
+| Skill `brand-goldstandard` | **Master-Skill** für Marken-/Design-Durchgänge (12 Phasen, Tore, Design-Lint, Markensystem v4 „Nachtstrom“, Master-Prompt Cinematic 5.0) |
 | Skill `website-audit` | Orchestriert Audits, führt Findings zusammen, priorisiert (ICE-R), löst Konflikte |
 | Skill `seo-local` | Technisches + lokales SEO, strukturierte Daten, Seitenarchitektur |
 | Skill `content-trust` | Inhalte, Belege, Markenstimme, Claims-Prüfung |
