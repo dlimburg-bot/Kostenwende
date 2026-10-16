@@ -1,0 +1,9 @@
+node_modules/
+.qa/last-pass.json
+.qa/runs/
+.qa/test-results/
+.qa/playwright.json
+.qa/lighthouse.json
+.qa/check.json
+.env
+.env.*

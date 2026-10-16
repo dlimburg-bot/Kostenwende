@@ -649,6 +649,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
 .ki-mini{display:grid;gap:14px;margin-top:10px}
 .ki-mini ul{margin:6px 0 0}
 .rail-dots{display:none}
+.rail:focus-visible{outline:3px solid var(--brand);outline-offset:4px;border-radius:12px}
 .chart-more>summary{color:var(--deep-fg);margin-top:8px}
 .chart-more>summary h3{color:inherit;font-size:1.125rem}
 .chart-more .chart{margin-top:12px}
@@ -884,7 +885,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
       </div>
       <div class="facts" role="list">
         <div class="fact rv" role="listitem"><b data-count="22" data-suffix=" %">22 %</b><span>der Stromkunden sind noch in der Grundversorgung</span><cite>Bundesnetzagentur, Monitoring 2025</cite></div>
-        <div class="fact rv" role="listitem"><b data-count="1315" data-suffix=" €">1.315 €</b><span>Mehrkosten pro Jahr, Beispiel Einfamilienhaus mit Strom und Gas</span><cite>Verivox, 06/2026</cite></div>
+        <div class="fact rv" role="listitem"><b data-count="1315" data-suffix=" €">1.315 €</b><span>Mehrkosten pro Jahr in der Grundversorgung, Beispiel Einfamilienhaus (4.000 kWh Strom, 20.000 kWh Gas)</span><cite>Verivox, 06/2026</cite></div>
         <div class="fact rv" role="listitem"><b data-count="5.4" data-dec="1" data-suffix=" Mrd. €">5,4 Mrd. €</b><span>zu viel gezahlt, allein im 1. Halbjahr 2026</span><cite>Verivox, hochgerechnet</cite></div>
         <div class="fact rv" role="listitem"><b data-count="37.0" data-dec="1" data-suffix=" ct">37,0 ct</b><span>Ø Strompreis je kWh für Haushalte</span><cite>BDEW, 08/2026</cite></div>
       </div>
@@ -893,7 +894,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
       <details class="more chart-more rv" data-open-desktop>
       <summary><h3>Der CO₂-Preis auf Heizgas und Heizöl steigt per Gesetz</h3></summary>
       <figure class="chart rv" id="co2" aria-labelledby="co2-cap">
-        <svg viewBox="0 0 600 270" role="img" aria-label="CO₂-Preis in Euro je Tonne: 2021 25, 2022 30, 2023 30, 2024 45, 2025 55, 2026 und 2027 Korridor 55 bis 65, ab 2028 Marktpreis im EU-Emissionshandel">
+        <svg viewBox="0 0 600 270" role="img" aria-label="CO₂-Preis in Euro je Tonne: 2021 25, 2022 30, 2023 30, 2024 45, 2025 55, 2026 Korridor 55 bis 65, 2027 Korridor 55 bis 65 vom Bundestag beschlossen, ab 2028 Marktpreis im EU-Emissionshandel">
           <line x1="20" y1="230" x2="590" y2="230" stroke="currentColor" stroke-opacity=".25"/>
           <rect class="bar" x="30"  y="167.5" width="48" height="62.5" rx="6"/>
           <rect class="bar" x="102" y="155"   width="48" height="75"   rx="6"/>
@@ -914,7 +915,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
             <text x="486" y="252">’27</text><text x="558" y="252">ab ’28</text>
           </g>
         </svg>
-        <figcaption id="co2-cap">CO₂-Preis in € je Tonne nach Brennstoffemissionshandelsgesetz (BEHG); 2026/27 Preiskorridor 55–65 €. Ab 2028 soll der EU-Emissionshandel ETS2 übernehmen, der Preis bildet sich dann am Markt.</figcaption>
+        <figcaption id="co2-cap">CO₂-Preis in € je Tonne nach Brennstoffemissionshandelsgesetz (BEHG); 2026 Preiskorridor 55–65 €. Für 2027 hat der Bundestag am 15.10.2026 denselben Korridor beschlossen (Zustimmung des Bundesrats ausstehend). Ab 2028 soll der EU-Emissionshandel ETS2 übernehmen, der Preis bildet sich dann am Markt.</figcaption>
       </figure>
       </details>
     </div>
@@ -1276,15 +1277,15 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
       <h3>Verantwortlicher</h3>
       <p>Dennis Limburg, Reutestr. 40, 78056 Villingen-Schwenningen, dennis.limburg1981@gmail.com, 0178 6128036.</p>
       <h3>Aufruf dieser Website</h3>
-      <p>Beim Aufruf verarbeitet mein Hosting-Anbieter technisch notwendige Daten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser) in Server-Logdateien, um die Website sicher auszuliefern (Art. 6 Abs. 1 lit. f DSGVO). Diese Website setzt keine Cookies und lädt keine externen Schriften.</p>
+      <p>Diese Website wird über GitHub Pages bereitgestellt (GitHub, Inc., USA). Beim Aufruf verarbeitet GitHub als Hosting-Anbieter technisch notwendige Daten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser) in Server-Logdateien, um die Website sicher auszuliefern (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden; Einzelheiten stehen in der Datenschutzerklärung von GitHub. Diese Website setzt keine Cookies und lädt keine externen Schriften.</p>
       <h3>Kontakt per Telefon, E-Mail oder WhatsApp</h3>
       <p>Wenn Sie mich kontaktieren, verarbeite ich Ihre Angaben zur Bearbeitung Ihrer Anfrage und zur Vorbereitung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO). WhatsApp-Links öffnen erst nach Ihrem Klick den Dienst der WhatsApp Ireland Ltd.; dabei gelten deren Datenschutzbestimmungen, und Daten können in die USA übermittelt werden.</p>
       <h3>Rückruf-Formular</h3>
-      <p>Wenn Sie das Rückruf-Formular absenden, werden Name, Telefonnummer, Wunschzeit und Ihre Rechner-Angaben (Energieart, Verbrauch, Tarif, geschätzte Ersparnis) verschlüsselt an den Automatisierungsdienst Make (Server in der EU) übertragen, in meiner Interessentenliste gespeichert und mir per E-Mail zugestellt (Art. 6 Abs. 1 lit. b DSGVO). Kommt kein Vertrag zustande, lösche ich die Angaben spätestens nach sechs Monaten.</p>
+      <p>Wenn Sie das Rückruf-Formular absenden, werden Name, Telefonnummer, Wunschzeit und Ihre Rechner-Angaben (Energieart, Verbrauch, Tarif, geschätzte Ersparnis) verschlüsselt an den Automatisierungsdienst Make (Server in der EU) übertragen, in meiner Interessentenliste gespeichert und mir per E-Mail an mein Postfach bei Microsoft (Outlook.com) zugestellt (Art. 6 Abs. 1 lit. b DSGVO). Kommt kein Vertrag zustande, lösche ich die Angaben spätestens nach sechs Monaten.</p>
       <h3>Reichweitenmessung ohne Cookies</h3>
       <p>Um die Website zu verbessern, nutze ich die Statistik-Software Umami. Nach Angaben des Anbieters arbeitet sie ohne Cookies, speichert keine vollständigen IP-Adressen und verfolgt Sie nicht über andere Websites; auf Ihrem Gerät wird nichts gespeichert. Ist in Ihrem Browser „Do Not Track“ aktiviert, findet keine Messung statt (Art. 6 Abs. 1 lit. f DSGVO).</p>
       <h3>Terminbuchung</h3>
-      <p>Für Termine kann ich auf einen externen Buchungsdienst verlinken. Erst mit dem Klick verlassen Sie diese Website; es gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+      <p>Für Termine verlinke ich auf den Buchungsdienst Calendly (Calendly LLC, USA). Erst mit dem Klick verlassen Sie diese Website; dort gelten die Datenschutzbestimmungen von Calendly, und Daten können in die USA übermittelt werden.</p>
       <h3>Weitergabe bei Vertragsabschluss</h3>
       <p>Entscheiden Sie sich für einen neuen Tarif, übermittle ich die dafür nötigen Daten an die TELESON Vertriebs GmbH und den gewählten Energieversorger (Art. 6 Abs. 1 lit. b DSGVO).</p>
       <h3>Speicherdauer</h3>
@@ -1319,7 +1320,7 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
 <!-- Dezenter Erinnerungs-Hinweis: erscheint einmal pro Sitzung, wenn der Rechner genutzt und verlassen wurde -->
 <div class="nudge" id="nudge" role="status" hidden>
   <p><span>Ihr Ergebnis</span><b id="nudge-val">–</b></p>
-  <a class="btn btn-accent" data-link="termin" href="https://wa.me/491786128036" target="_blank" rel="noopener">Termin sichern</a>
+  <a class="btn btn-accent" data-link="termin" href="https://wa.me/491786128036" target="_blank" rel="noopener">Termin wählen</a>
   <button type="button" class="nudge-x" id="nudge-x" aria-label="Hinweis schließen">×</button>
 </div>
 
@@ -1874,6 +1875,9 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
         [...dots.children].forEach((d, n) => d.classList.toggle('on', n === i));
       };
       rail.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+      // Tastatur: nur wischbare Leisten werden fokussierbar (Pfeiltasten scrollen), sonst kein zusätzlicher Tab-Stopp
+      const focusable = () => { if (rail.scrollWidth > rail.clientWidth + 1) rail.tabIndex = 0; else rail.removeAttribute('tabindex'); };
+      focusable(); addEventListener('resize', focusable, { passive: true });
       upd();
     });
   })();
