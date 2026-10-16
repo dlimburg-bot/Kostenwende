@@ -190,3 +190,16 @@ deshalb wurden sie in Durchgang 1 bewusst nicht „schnell“ verändert.
 1. Antworten auf die **3 Fachfragen** (K1, K3, K4).
 2. **Veröffentlichung** des lokalen Stands: Push und Umstellung von GitHub Pages auf „main /docs“.
 3. **Durchgang 2** (Gestaltungsumbau nach Abschnitt 4) starten.
+
+---
+
+## 8 · Nachtrag: Ihre Entscheidungen (16.10.2026, umgesetzt)
+
+| Frage | Entscheidung | Umsetzung |
+|---|---|---|
+| K1 Rechner-Bezug | Marktwert, klar gekennzeichnet | „Mögliche Ersparnis pro Jahr (Marktwert)“; Quellenzeile: „mein konkretes Angebot aus dem TELESON-Portfolio kann abweichen“ |
+| K2 Beispielpreise | (folgt aus K1) | „Geschätzte Kosten pro Jahr“ + Hinweis auf Beispielpreis, bis eigene Preise eingegeben sind; Test sichert das ab |
+| K3 TELESON-Logo, Versorger, BDD | alle drei bestätigt | bleiben; im Register als „von Dennis bestätigt, Nachweis nicht eingesehen“ (T-01 bis T-03) |
+| K4 Adresse in Google-Daten | vollständig lassen | unverändert |
+
+Zusätzlich: Ortsliste im Bereich „Ansprechpartner“ am Handy als Fließtext (Seitenlänge 8,08 → unter 8 Bildschirme).

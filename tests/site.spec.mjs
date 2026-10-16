@@ -16,6 +16,17 @@ test.describe('Funktion', () => {
     expect(errs).toEqual([]);
   });
 
+  test('Rechner kennzeichnet Marktwert und Beispielpreis (K1/K2)', async ({ page }) => {
+    await page.goto('./');
+    await expect(page.locator('#r-kosten-l')).toHaveText('Geschätzte Kosten pro Jahr');
+    await expect(page.locator('#r-src')).toContainText('Marktwert laut Verivox');
+    await expect(page.locator('#r-src')).toContainText('Beispielpreis');
+    await page.locator('#rechner summary').click();
+    await page.fill('#arbeitspreis', '38,5');
+    await expect(page.locator('#r-kosten-l')).toHaveText('Ihre Kosten pro Jahr');
+    await expect(page.locator('#r-src')).not.toContainText('Beispielpreis');
+  });
+
   test('Termin-Button führt zu Calendly Tarif-Check', async ({ page }) => {
     await page.goto('./');
     await expect(page.locator('#lp-termin a')).toHaveAttribute('href', /calendly\.com\/d-limburg\/kostenwende-kostenloser-tarif-check/);

@@ -147,6 +147,45 @@
       "stand": "2025-05",
       "status": "verifiziert",
       "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "T-01",
+      "text": "TELESON-Logo auf der Website",
+      "quelle": "Freigabe der Markennutzung durch TELESON (liegt Dennis vor, Bestätigung 16.10.2026)",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Nachweis nicht eingesehen; bei Rechtsprüfung vorlegen"
+    },
+    {
+      "id": "T-02",
+      "text": "Produktpartner: LichtBlick, Vattenfall, Montana, SWK, enviaM, RheinEnergie",
+      "quelle": "TELESON-Portfolio (Bestätigung Dennis 16.10.2026)",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Halbjährlich prüfen, ob noch im Portfolio"
+    },
+    {
+      "id": "T-03",
+      "text": "Geschult nach den Verhaltensstandards des BDD",
+      "quelle": "Schulung absolviert (Bestätigung Dennis 16.10.2026)",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Nachweis nicht eingesehen"
+    },
+    {
+      "id": "R-01",
+      "text": "Rechner-Ersparnis = Abstand zum günstigsten Markttarif (Verivox), als Marktwert gekennzeichnet",
+      "quelle": "Entscheidung Dennis 16.10.2026",
+      "status": "verifiziert",
+      "geprueft_am": "2026-10-16"
+    },
+    {
+      "id": "R-02",
+      "text": "Beispielpreise Rechner: Strom 42 ct/kWh + 14 €/Monat, Gas 12 ct/kWh + 15 €/Monat",
+      "quelle": "keine – Beispielwerte, als solche gekennzeichnet",
+      "status": "übernommen",
+      "geprueft_am": "2026-10-16",
+      "notiz": "Offen: an regionalem Grundversorgungstarif ausrichten und Quelle nennen"
     }
   ]
 }

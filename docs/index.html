@@ -637,6 +637,9 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
   .person .stack>.eyebrow{display:none}
   .person .stack>h2{grid-column:2;grid-row:1;margin:0}
   .person .stack>.lead,.person .towns,.person .creds{grid-column:1 / -1}
+  .person .towns{gap:2px 0}
+  .person .towns li{padding:0;border:0;background:none;font-size:.875rem;color:var(--muted)}
+  .person .towns li:not(:last-child)::after{content:"·";margin:0 .45em}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -772,10 +775,10 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
         </details>
         <p class="sr-only" id="r-live" aria-live="polite"></p>
         <div class="result">
-          <div class="row"><span>Ihre Kosten pro Jahr</span><b class="num" id="r-kosten">–</b></div>
+          <div class="row"><span id="r-kosten-l">Geschätzte Kosten pro Jahr</span><b class="num" id="r-kosten">–</b></div>
           <div class="spar-row">
             <div>
-              <span class="small" style="color:var(--deep-muted)">Mögliche Ersparnis pro Jahr</span>
+              <span class="small" style="color:var(--deep-muted)">Mögliche Ersparnis pro Jahr (Marktwert)</span>
               <div class="spar num" id="r-spar">–</div>
             </div>
             <!-- Spar-Ring: Anteil der Jahreskosten (SVG, feste Größe → kein CLS) -->
@@ -1538,7 +1541,12 @@ details.more:not(.card){margin-top:20px;border-top:1px solid var(--line);padding
   const calc = (user) => {
     const d = DATA[art], v = num('verbrauch'), ap = num('arbeitspreis'), gp = num('grundpreis'), t = $('tarif').value;
     $('wa-foto').href = wa(fotoText(v, ap));                 // WhatsApp-Text enthält die Rechner-Werte
-    $('r-src').textContent = `Orientierungswerte: Ø-Preis ${d.avgSrc}, Tarifabstände ${TARIF_SRC}, typische Verbräuche gerundet. Keine Garantie; Ihre tatsächliche Ersparnis ermittle ich mit Ihrer Abrechnung.`;
+    // Kennzeichnung (K1/K2): Marktwert statt Angebot; Beispielpreis, solange keine eigenen Preise eingegeben sind
+    const own = ap !== d.ap || gp !== d.gp;
+    $('r-kosten-l').textContent = own ? 'Ihre Kosten pro Jahr' : 'Geschätzte Kosten pro Jahr';
+    $('r-src').textContent = `Ersparnis = Abstand zum günstigsten Tarif am Markt (Marktwert laut ${TARIF_SRC}); mein konkretes Angebot aus dem TELESON-Portfolio kann davon abweichen. Ø-Preis ${d.avgSrc}. `
+      + (own ? '' : `Kosten mit Beispielpreis ${ct1.format(d.ap)} ct/kWh und ${eur.format(d.gp)} Grundpreis im Monat; genauer mit Ihren Preisen. `)
+      + 'Keine Garantie; Ihre tatsächliche Ersparnis ermittle ich mit Ihrer Abrechnung.';
     if (!v || !ap) {
       ['r-kosten', 'r-spar'].forEach((id) => setText($(id), '–'));
       ['cmp-you', 'cmp-avg'].forEach((id) => { $(id).style.transform = 'scaleX(0)'; });
